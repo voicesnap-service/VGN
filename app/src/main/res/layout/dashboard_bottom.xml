@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rytBottom"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/five"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:layout_marginTop="1dp"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:background="@color/clr_txt_grey_light" />
+
+    <LinearLayout
+        android:id="@+id/lnrBottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/view2"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/rytHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/imgHome"
+                android:layout_width="@dimen/twenty_five"
+                android:layout_height="@dimen/twenty_five"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginBottom="@dimen/five"
+                android:src="@drawable/ic_home" />
+
+            <TextView
+                android:id="@+id/lblHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgHome"
+                android:layout_centerHorizontal="true"
+                android:text="Home"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rytNotifications"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="1dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imgNotiifcation"
+                android:layout_width="@dimen/twenty_five"
+                android:layout_height="@dimen/twenty_five"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginBottom="@dimen/five"
+                android:src="@drawable/ic_notification_grey" />
+
+            <TextView
+                android:id="@+id/lblNotifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgNotiifcation"
+                android:layout_centerInParent="true"
+                android:text="@string/txt_notifications"
+                android:textColor="@color/clr_icon_grey"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rytHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="1dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imghelp"
+                android:layout_width="@dimen/twenty_five"
+                android:layout_height="@dimen/twenty_five"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginBottom="@dimen/five"
+                android:src="@drawable/ic_help_grey" />
+
+            <TextView
+                android:id="@+id/lblhelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/txt_help"
+                android:textStyle="bold"
+                android:textColor="@color/clr_icon_grey"
+                android:textSize="12dp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rytSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="1dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imgSettings"
+                android:layout_width="@dimen/twenty_five"
+                android:layout_height="@dimen/twenty_five"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginBottom="@dimen/five"
+                android:src="@drawable/ic_settings_grey" />
+            <TextView
+                android:id="@+id/lblSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgSettings"
+                android:layout_centerHorizontal="true"
+                android:text="@string/txt_settings"
+                android:textColor="@color/clr_icon_grey"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

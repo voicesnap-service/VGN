@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/lnrNoticeboardd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_marginEnd="@dimen/ten"
+        android:layout_marginRight="@dimen/two"
+        android:layout_marginBottom="@dimen/ten"
+        android:background="@drawable/bg_shadow_white"
+        android:orientation="vertical"
+        android:padding="@dimen/eight"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/project_logo"
+            android:layout_width="@dimen/seventy"
+            android:layout_height="@dimen/seventy"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_user_grey"
+            app:shapeAppearanceOverlay="@style/roundedCorner"
+            app:strokeColor="@color/white" />
+
+        <RelativeLayout
+            android:id="@+id/rytCustomerINFO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/project_logo"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/rytRecentNotification1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/three">
+
+                <TextView
+                    android:id="@+id/lblMobileNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/two"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:padding="@dimen/two"
+                    android:text="Email - ID"
+                    android:textColor="@color/clr_email"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <View
+                    android:id="@+id/Viewlineone1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_below="@+id/lblMobileNumber"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_marginEnd="@dimen/five"
+                    android:background="@color/stroke_grey_light"
+                    android:visibility="gone">
+
+                </View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Viewlineone1"
+                    android:paddingBottom="@dimen/ten">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/LayoutNameProject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_default="percent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layoutAgent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent=".4">
+
+                            <ImageView
+                                android:id="@+id/imgAgent"
+                                android:layout_width="@dimen/thirty"
+                                android:layout_height="@dimen/twenty_five"
+                                android:layout_marginLeft="@dimen/eight"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="12dp"
+                                android:src="@drawable/customer_agent"
+                                android:visibility="visible"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <TextView
+                                android:id="@+id/lblAgentName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/three"
+                                android:text=""
+                                android:textColor="@color/clr_text"
+                                android:textSize="@dimen/thirteen"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/imgAgent"
+                                app:layout_constraintLeft_toRightOf="@+id/imgAgent"
+                                app:layout_constraintTop_toTopOf="@+id/imgAgent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutSubjectType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/LayoutNameProject"
+                        android:layout_marginStart="@dimen/ten"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintWidth_default="percent">
+
+                        <ImageView
+                            android:id="@+id/imgLastCall"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
+                            android:layout_marginTop="@dimen/eight"
+                            android:layout_marginRight="12dp"
+                            android:src="@drawable/last_call_time"
+                            android:visibility="visible"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent=".05" />
+
+                        <TextView
+                            android:id="@+id/lblRecentCallTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/three"
+                            android:text=""
+                            android:textColor="@color/clr_text"
+                            android:textSize="@dimen/thirteen"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/imgLastCall"
+                            app:layout_constraintLeft_toRightOf="@+id/imgLastCall"
+                            app:layout_constraintTop_toTopOf="@+id/imgLastCall"
+                            app:layout_constraintWidth_percent=".6" />
+
+                        <ImageView
+                            android:id="@+id/imgArrowdown"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
+                            android:layout_below="@+id/layoutSubjectType"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_arrow_down_blue"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/lblRecentCallTime"
+                            app:layout_constraintLeft_toRightOf="@+id/lblRecentCallTime"
+                            app:layout_constraintTop_toTopOf="@+id/lblRecentCallTime"
+                            app:layout_constraintWidth_percent=".2" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layoutSubjectType"
+                        android:layout_marginStart="@dimen/twelve"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginEnd="@dimen/five"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imgProject"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/twenty"
+                            android:layout_marginLeft="@dimen/eight"
+                            android:layout_marginRight="12dp"
+                            android:src="@drawable/project_icon"
+                            android:visibility="visible"
+                            app:layout_constraintRight_toLeftOf="@+id/lblProjectName"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/lblProjectName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/two"
+                            android:layout_marginTop="@dimen/three"
+                            android:layout_marginEnd="@dimen/twenty"
+                            android:text=""
+                            android:textColor="@color/clr_text"
+                            android:textSize="@dimen/thirteen"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/imgProject"
+                            app:layout_constraintLeft_toRightOf="@+id/imgProject"
+                            app:layout_constraintTop_toTopOf="@+id/imgProject" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rytCustomerInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/project_logo"
+            android:padding="@dimen/five"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/Viewlineone"
+                android:layout_width="@dimen/two"
+                android:layout_height="@dimen/fifteen"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/five"
+                android:background="@color/app_color">
+
+            </View>
+
+            <TextView
+                android:id="@+id/lblProjectname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginTop="@dimen/two"
+                android:layout_marginEnd="@dimen/thirty"
+                android:layout_toRightOf="@+id/Viewlineone"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="@dimen/two"
+                android:text="Emeregency"
+                android:textColor="@color/black"
+                android:textSize="@dimen/thirteen"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/lblDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Viewlineone"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/twelve"
+                android:layout_marginRight="@dimen/ten"
+                android:gravity="right"
+                android:text="date"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve" />
+
+            <TextView
+                android:id="@+id/lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Viewlineone"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/twelve"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_toRightOf="@+id/lblDate"
+                android:text=" - "
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve" />
+
+            <TextView
+                android:id="@+id/lbltime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Viewlineone"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/twelve"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_toRightOf="@+id/lbl"
+                android:text="time"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lbltime"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/lblSentBy1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Agent : "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/lblNoticePostedby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_toRightOf="@+id/lblSentBy1"
+                    android:text="Swathi"
+                    android:textColor="@color/clr_green"
+                    android:textSize="@dimen/twelve"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

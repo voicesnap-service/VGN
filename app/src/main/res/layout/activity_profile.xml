@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:CircleImageView="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Activities.Profile">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/LayoutProfileOverall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginStart="@dimen/thirteen"
+            android:layout_marginEnd="@dimen/thirteen"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgPhoto"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="@dimen/eighty"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="@dimen/ten"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_user_grey"
+                CircleImageView:civ_border_color="#FF000000"
+                CircleImageView:civ_border_width="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lblprofileAgentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/eighteen"
+                android:layout_marginTop="@dimen/eight"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgPhoto" />
+
+            <TextView
+                android:id="@+id/lblRoleType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agent"
+                android:textColor="@color/black"
+                android:textSize="@dimen/thirteen"
+                android:layout_marginTop="@dimen/eight"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblprofileAgentName" />
+
+            <RelativeLayout
+                android:id="@+id/LayoutEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/twenty"
+                android:layout_marginEnd="@dimen/twenty"
+                android:layout_marginTop="@dimen/twenty"
+                android:background="@drawable/bg_shadow_white"
+                android:padding="@dimen/five"
+                app:layout_constraintTop_toBottomOf="@+id/lblRoleType"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <TextView
+                    android:id="@+id/lblMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fourty"
+                    android:layout_toRightOf="@+id/imgEmail"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center"
+                    android:text="abc@vgn.com"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/clr_txt_grey_light"
+                    android:textSize="@dimen/fifteen" />
+
+                <ImageView
+                    android:id="@+id/imgEmail"
+                    android:layout_width="@dimen/twenty_three"
+                    android:layout_height="@dimen/twenty_three"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:src="@drawable/ic_email_at"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/LayoutMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/twenty"
+                android:layout_marginEnd="@dimen/twenty"
+                android:layout_marginTop="@dimen/fifteen"
+                android:background="@drawable/bg_shadow_white"
+                android:padding="@dimen/five"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <TextView
+                    android:id="@+id/lblMobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fourty"
+                    android:layout_toRightOf="@+id/imgMobile"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center"
+                    android:text="7894561230"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/clr_txt_grey_light"
+                    android:textSize="@dimen/fifteen" />
+
+                <ImageView
+                    android:id="@+id/imgMobile"
+                    android:layout_width="@dimen/twenty_three"
+                    android:layout_height="@dimen/thirty"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:src="@drawable/ic_mobile"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/LayoutSipNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/twenty"
+                android:layout_marginEnd="@dimen/twenty"
+                android:layout_marginTop="@dimen/fifteen"
+                android:background="@drawable/bg_shadow_white"
+                android:padding="@dimen/five"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutMobileNumber"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/lblSIPNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fourty"
+                    android:layout_toRightOf="@+id/imgsip"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center"
+                    android:text="192.168.1.43"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/clr_txt_grey_light"
+                    android:textSize="@dimen/fifteen" />
+
+                <ImageView
+                    android:id="@+id/imgsip"
+                    android:layout_width="@dimen/twenty_three"
+                    android:layout_height="@dimen/thirty"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:src="@drawable/sip_number"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/LayoutAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/twenty"
+                android:layout_marginEnd="@dimen/twenty"
+                android:layout_marginTop="@dimen/fifteen"
+                android:background="@drawable/bg_shadow_white"
+                android:padding="@dimen/five"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutSipNumber"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <TextView
+                    android:id="@+id/lblAvailableType"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fourty"
+                    android:layout_toRightOf="@+id/imgAvailable"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center"
+                    android:text="Available"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/clr_txt_grey_light"
+                    android:textSize="@dimen/fifteen" />
+
+                <ImageView
+                    android:id="@+id/imgAvailable"
+                    android:layout_width="@dimen/twenty_three"
+                    android:layout_height="@dimen/thirty"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:src="@drawable/available"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/layoutResport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/twenty"
+                android:layout_marginEnd="@dimen/twenty"
+                android:layout_marginTop="@dimen/fifteen"
+                android:padding="@dimen/five"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutAvailable"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <TextView
+                    android:id="@+id/lblReportingTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fourty"
+                    android:layout_marginStart="@dimen/ten"
+                    android:layout_toRightOf="@+id/lblReport"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center"
+                    android:text=""
+                    android:textColor="@color/app_color"
+                    android:textColorHint="@color/clr_txt_grey_light"
+                    android:textSize="@dimen/fifteen" />
+
+                <TextView
+                    android:id="@+id/lblReport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/fourty"
+                    android:layout_alignParentLeft="true"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center"
+                    android:text="Reporting to :"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/clr_txt_grey_light"
+                    android:textSize="@dimen/fifteen" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/lblAvailabilityType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Availability Status :"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/twenty"
+                android:layout_marginEnd="@dimen/fifty"
+                android:padding="@dimen/five"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutResport"
+                android:textColorHint="@color/clr_txt_grey_light"
+                android:textSize="@dimen/fifteen" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycelrCallStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginEnd="@dimen/twenty"
+                android:layout_marginBottom="@dimen/ten"
+                android:orientation="vertical"
+                android:padding="@dimen/five"
+
+                android:layout_marginStart="@dimen/twenty"
+                app:layout_constraintTop_toBottomOf="@+id/lblAvailabilityType"
+                app:layout_constraintStart_toStartOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

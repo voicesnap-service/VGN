@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/ten">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="@dimen/ten">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnBottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutCustomerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/Customername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:layout_marginTop="@dimen/twelve"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    >
+                </TextView>
+                <EditText
+                    android:id="@+id/txtCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Type name.."
+                    android:background="@drawable/bg_rectangle_edittextbox"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/ten"
+                    app:layout_constraintTop_toBottomOf="@+id/Customername"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCustomerName"
+
+               >
+                <TextView
+                    android:id="@+id/Email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:layout_marginTop="@dimen/five"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    >
+                </TextView>
+                <EditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Type e-mail.."
+                    android:background="@drawable/bg_rectangle_edittextbox"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/ten"
+                    app:layout_constraintTop_toBottomOf="@+id/Email"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutEmail">
+                <TextView
+                    android:id="@+id/Mobilenumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MobileNumber"
+                    android:layout_marginTop="@dimen/five"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </TextView>
+                <EditText
+                    android:id="@+id/txtMobileNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Type mobilenumber.."
+                    android:background="@drawable/bg_rectangle_edittextbox"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/ten"
+                    app:layout_constraintTop_toBottomOf="@+id/Mobilenumber"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutAlternateMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutMobileNumber">
+                <TextView
+                    android:id="@+id/AlternateMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alternate Mobile"
+                    android:layout_marginTop="@dimen/five"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </TextView>
+                <EditText
+                    android:id="@+id/txtAlternateMobileNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Type alternate number.."
+                    android:background="@drawable/bg_rectangle_edittextbox"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/ten"
+                    app:layout_constraintTop_toBottomOf="@+id/AlternateMobile"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutPincode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutAlternateMobile">
+                <TextView
+                    android:id="@+id/PinCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PinCode"
+                    android:layout_marginTop="@dimen/five"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </TextView>
+                <EditText
+                    android:id="@+id/txtPinCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Type pincode.."
+                    android:background="@drawable/bg_rectangle_edittextbox"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/ten"
+                    app:layout_constraintTop_toBottomOf="@+id/PinCode"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutPincode">
+                <TextView
+                    android:id="@+id/Area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Area"
+                    android:layout_marginTop="@dimen/five"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </TextView>
+                <EditText
+                    android:id="@+id/txtAreaName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Type area.."
+                    android:background="@drawable/bg_rectangle_edittextbox"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/ten"
+                    app:layout_constraintTop_toBottomOf="@+id/Area"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutFollowUpDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutArea">
+                <TextView
+                    android:id="@+id/FollowUpDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FollowUp Date"
+                    android:layout_marginTop="@dimen/five"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </TextView>
+                <TextView
+                    android:id="@+id/txtFollowUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select FollowUp Date.."
+                    android:background="@drawable/bg_calendar_date"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/twelve"
+                    app:layout_constraintTop_toBottomOf="@+id/FollowUpDate"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutFollowUpTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutFollowUpDate">
+                <TextView
+                    android:id="@+id/FollowUpTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FollowUp Time"
+                    android:layout_marginTop="@dimen/five"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </TextView>
+                <TextView
+                    android:id="@+id/txtFollowUpTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select FollowUp time.."
+                    android:background="@drawable/bg_calendar_time"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/twelve"
+                    app:layout_constraintTop_toBottomOf="@+id/FollowUpTime"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutActionTaken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LayoutFollowUpTime">
+                <TextView
+                    android:id="@+id/ActionTaken"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Action Taken"
+                    android:layout_marginTop="@dimen/five"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_color"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </TextView>
+                <EditText
+                    android:id="@+id/txtActionTaken"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Type here.."
+                    android:background="@drawable/bg_rectangle_edittextbox"
+                    android:textColor="@color/transparent"
+                    android:textSize="@dimen/thirteen"
+                    android:padding="@dimen/ten"
+                    android:gravity="top|left"
+                    app:layout_constraintTop_toBottomOf="@+id/ActionTaken"
+                    android:layout_marginTop="@dimen/seven"
+                    android:textStyle="bold" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/app_color"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btnUpdate" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/bg_submit_btn"
+            android:hint="Update"
+            android:onClick="btnCreateMeetingClick"
+            android:padding="5dp"
+            android:textAllCaps="false"
+            android:textColorHint="@color/white"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

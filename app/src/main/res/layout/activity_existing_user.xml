@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menuIcon"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="@dimen/twenty"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/one_fourty"
+            android:layout_marginStart="@dimen/eight"
+            android:padding="@dimen/five"
+            android:src="@drawable/signin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/lblCreatePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/eight"
+        android:padding="@dimen/five"
+        android:text="Welcome Back"
+        android:textAllCaps="false"
+        android:textColor="@color/app_color"
+        android:textSize="@dimen/twenty"
+        android:layout_marginTop="@dimen/fifteen"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/menuIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+    </TextView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreatePassword">
+
+        <TextView
+            android:id="@+id/lblmobilenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/thirty_five"
+            android:layout_marginLeft="@dimen/twenty_five"
+            android:layout_marginRight="@dimen/twenty_five"
+            android:text="@string/txt_enter_e_mail"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen"
+            android:visibility="gone"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <RelativeLayout
+            android:id="@+id/LayoutEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/thirty_five"
+            android:layout_marginTop="@dimen/fifteen"
+            android:layout_marginEnd="@dimen/thirty_five"
+            android:background="@drawable/bg_shadow_white"
+            android:padding="@dimen/eight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblmobilenumber">
+
+            <EditText
+                android:id="@+id/edUserEmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fourty"
+                android:layout_toRightOf="@+id/imgEmail"
+                android:background="@android:color/transparent"
+                android:hint="Email ID"
+                android:inputType="textMultiLine"
+                android:maxLines="2"
+                android:textColorHint="@color/clr_txt_grey_light"
+                android:textSize="@dimen/fifteen" />
+
+            <ImageView
+                android:id="@+id/imgEmail"
+                android:layout_width="@dimen/twenty_three"
+                android:layout_height="@dimen/twenty_three"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginEnd="@dimen/ten"
+                android:layout_marginStart="@dimen/five"
+                android:src="@drawable/ic_email_at"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/lblConfirmPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty_five"
+            android:layout_marginStart="@dimen/thirty_five"
+            android:layout_marginLeft="@dimen/twenty_five"
+            android:layout_marginRight="@dimen/twenty_five"
+            android:text="@string/txt_enter_password"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen"
+            android:visibility="gone"
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@+id/LayoutEmail"
+            app:layout_constraintStart_toStartOf="parent">
+        </TextView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/thirty_five"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/thirty_five"
+            android:padding="@dimen/eight"
+            android:background="@drawable/bg_shadow_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblConfirmPassword">
+            <ImageView
+                android:id="@+id/imgNewPassword"
+                android:layout_width="@dimen/twenty_three"
+                android:layout_height="@dimen/twenty_three"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginEnd="@dimen/ten"
+                android:layout_marginStart="@dimen/five"
+                android:src="@drawable/ic_lock"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edPassword"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/fourty"
+                android:hint="Password"
+                android:textColorHint="@color/stroke_grey_light"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:layout_marginStart="@dimen/eight"
+                android:paddingTop="@dimen/five"
+                android:background="@android:color/transparent"
+                android:textColor="@color/clr_text_color"
+                android:textSize="@dimen/fifteen"
+                android:text=""
+                app:layout_constraintLeft_toRightOf="@+id/imgNewPassword"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <ImageView
+                android:id="@+id/imgEye1"
+                android:layout_width="@dimen/twenty_three"
+                android:layout_height="@dimen/twenty_three"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginEnd="@dimen/ten"
+                android:src="@drawable/ic_eye"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/lblForgotPasswword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginStart="@dimen/thirty_five"
+            android:layout_marginLeft="@dimen/twenty_five"
+            android:padding="@dimen/two"
+            android:layout_marginRight="@dimen/twenty_five"
+            android:text="@string/txt_single_forgot_password"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/sixteen"
+            android:visibility="invisible"
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+        </TextView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fourty"
+            android:layout_marginStart="@dimen/thirty_five"
+            android:layout_marginTop="@dimen/fifty"
+            android:layout_marginEnd="@dimen/thirty_five"
+            android:background="@drawable/bg_submit_btn"
+            android:text="@string/txt_sign_in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sixteen"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblForgotPasswword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblForgotPasswword">
+        </androidx.appcompat.widget.AppCompatButton>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

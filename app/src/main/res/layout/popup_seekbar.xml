@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/layoutVoice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/twenty"
+        android:layout_margin="@dimen/ten"
+        android:layout_marginEnd="@dimen/twenty"
+        android:layout_marginStart="@dimen/twenty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/bg_card_outer_line"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/imgclose"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="@dimen/ten"
+            android:padding="0dp"
+            android:src="@drawable/ic_close"
+            android:visibility="visible"
+            android:layout_alignParentRight="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <WebView
+            android:id="@+id/webviewVoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_below="@+id/imgclose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgclose"
+            android:layout_marginBottom="@dimen/ten">
+        </WebView>
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/layoutBlock"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginVertical="5dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginStart="@dimen/eight"-->
+<!--            android:visibility="gone"-->
+<!--            android:background="@drawable/bg_shadow_white"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imgclose">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lnrPlayLoad"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <ProgressBar-->
+<!--                    android:id="@+id/voiceLoader"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:indeterminateTint="@color/app_color" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/imgPlaypause"-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:src="@drawable/ic_play"-->
+<!--                    android:visibility="visible" />-->
+<!--            </LinearLayout>-->
+<!--            <SeekBar-->
+<!--                android:id="@+id/seekbarvoice"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_toLeftOf="@+id/lnrRecentSeconds"-->
+<!--                android:layout_toRightOf="@+id/lnrPlayLoad"-->
+<!--                android:indeterminate="false" />-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lnrRecentSeconds"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_below="@+id/seekbarvoice"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_marginBottom="@dimen/ten">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/lblduration"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="00:00"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="10dp"-->
+<!--                    android:textStyle="normal" />-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text=" / "-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="10dp" />-->
+<!--                <TextView-->
+<!--                    android:id="@+id/lblRecentTotalDuration"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="02:00"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="10dp" />-->
+<!--            </LinearLayout>-->
+<!--        </RelativeLayout>-->
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/fourty"
+        android:layout_marginStart="@dimen/thirty_five"
+        android:padding="@dimen/five"
+        android:layout_marginTop="@dimen/thirty"
+        android:layout_marginEnd="@dimen/thirty_five"
+        android:background="@drawable/bg_submit_btn"
+        android:text="@string/txt_download"
+        android:visibility="gone"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sixteen"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/layoutVoice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+    </androidx.appcompat.widget.AppCompatButton>
+</androidx.constraintlayout.widget.ConstraintLayout>

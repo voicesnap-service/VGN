@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "64515344320",
+    "project_id": "vgn-talk-desk",
+    "storage_bucket": "vgn-talk-desk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64515344320:android:610efe30b8921ed9e06a25",
+        "android_client_info": {
+          "package_name": "com.vsnap.vgn.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64515344320-fk5jmrtrm36204h4trh8950qdc7q4j9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCNWmZL0bN0FDrmObtDIY9-oOs_P25cf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64515344320-fk5jmrtrm36204h4trh8950qdc7q4j9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FF926FE8</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="clr_parent">#2F4C93</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="app_color">#d81159</color>
+    <color name="login_color">#d81159</color>
+    <color name="status_bar">#f5bcd1</color>
+    <color name="clr_email">#FFAB4C</color>
+    <color name="light_white">#fefefe</color>
+    <color name="light_pink">#ffd1e2</color>
+    <color name="black">#FF000000</color>
+    <color name="vgn_color">#d81159</color>
+    <color name="white">#FFFFFF</color>
+    <color name="clr_principal">#902476</color>
+    <color name="clr_receiver">#0f2239</color>
+    <color name="clr_teachingstaff">#006a88</color>
+    <color name="clr_white">#FFFFFF</color>
+    <color name="transparent">#80000000</color>
+    <color name="clr_light_black">#BF000000</color>
+    <color name="clr_search_blue">#d5daf7</color>
+    <color name="clr_bgred">#FF7575</color>
+    <color name="btn_clr_blue">#0084e8</color>
+    <color name="light_blue">#f5fbff</color>
+    <color name="stroke_grey_light">#C6C6C6</color>
+    <color name="clr_txt_grey_light">#BA918C8C</color>
+    <color name="clr_icon_grey">#9b9b9b</color>
+    <color name="clr_txt_red">#EC0C0C</color>
+    <color name="clr_sky_blue">#00a7ff</color>
+    <color name="clr_text_color">#523131</color>
+    <color name="clr_text_customer">#91264a</color>
+    <color name="clr_text">#413F42</color>
+    <color name="clr_green">#5daf98</color>
+    <color name="clr_available">#3a914b</color>
+    <color name="clr_available_red">#c92424</color>
+
+
+
+
+
+</resources>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/clr_white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/LayoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/twelve"
+        android:visibility="visible"
+        android:background="@color/app_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/twenty_three"
+            android:layout_height="@dimen/twenty_three"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginEnd="@dimen/two"
+            android:src="@drawable/ic_arrow_back_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lblMenuHeaderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ten"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Help"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fourteen"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/imgBack"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/viewline"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one"
+        android:layout_marginLeft="@dimen/five"
+        android:background="@color/white"
+        android:textSize="@dimen/twelve"
+        android:visibility="visible"
+        android:textStyle="normal"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutHeader" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_marginTop="@dimen/three"
+        android:layout_marginBottom="@dimen/one"
+        android:background="@color/clr_white"
+        app:layout_constraintBottom_toTopOf="@+id/LayoutAgreeTerms"
+        app:layout_constraintTop_toBottomOf="@+id/viewline">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/ten">
+
+        </WebView>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/LayoutAgreeTerms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/btnTermsAndCondition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <CheckBox
+            android:id="@+id/termsCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:backgroundTint="@color/app_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lblTermsCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I Agree to the terms and condition"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/five"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/termsCheckbox"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTermsAndCondition"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:background="@drawable/bg_btn_app_dim_color"
+        android:padding="@dimen/seven"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fourteen"
+        android:text="CONTINUE"
+        android:clickable="false"
+        android:enabled="false"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </androidx.appcompat.widget.AppCompatButton>
+</androidx.constraintlayout.widget.ConstraintLayout>

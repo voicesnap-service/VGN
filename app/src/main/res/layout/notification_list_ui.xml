@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rytOverAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fifteen"
+        android:background="@drawable/bg_shadow_white"
+        android:visibility="visible"
+        android:padding="@dimen/ten"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:id="@+id/rytUserDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/eight"
+            android:padding="@dimen/ten"
+            android:layout_toLeftOf="@+id/rytRole">
+
+            <TextView
+                android:id="@+id/lblNotificationType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/five"
+                android:text="Hi Customer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblNotificationContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblNotificationType"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_marginTop="@dimen/five"
+                android:text="You have an new missed call"
+                android:textColor="@color/transparent"
+                android:textSize="@dimen/twelve"
+                android:textStyle="normal" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rytRole"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/three"
+            android:layout_alignParentRight="true">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ten"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/lblDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="@dimen/three"
+                    android:maxLines="1"
+                    android:text="22/06/2023"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/lblNoticeficationTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblDate"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/five"
+                    android:text="1.33pm"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ten"
+                    android:textStyle="normal" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

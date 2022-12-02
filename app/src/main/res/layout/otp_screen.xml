@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menuIcon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgotpback"
+            android:layout_width="@dimen/thirty"
+            android:layout_height="@dimen/thirty"
+            android:layout_marginStart="@dimen/eight"
+            android:layout_marginTop="@dimen/twenty"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/one_eighty_five"
+            android:layout_marginStart="@dimen/eight"
+            android:padding="@dimen/five"
+            android:src="@drawable/otp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgotpback">
+
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/menuIcon">
+
+        <TextView
+            android:id="@+id/lblOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty_five"
+            android:layout_marginTop="@dimen/fifteen"
+            android:text="Enter Otp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/thirty"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lblcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty_five"
+            android:layout_marginTop="@dimen/fifteen"
+            android:layout_marginEnd="@dimen/ten"
+            android:text="@string/an_4_digit_code_has_been_sent_to"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblOtp" />
+
+        <LinearLayout
+            android:id="@+id/lnrOtp"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginStart="@dimen/twenty_five"
+            android:layout_marginTop="@dimen/thirty_five"
+            android:layout_marginEnd="@dimen/thirty"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintLeft_toLeftOf="@+id/lblcode"
+            app:layout_constraintTop_toBottomOf="@+id/lblcode">
+
+            <EditText
+                android:id="@+id/txtOne"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:text=""
+                android:maxLength="1"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/vgn_color"
+                android:layout_weight="1"
+                android:background="@drawable/bg_edittext_single_box">
+            </EditText>
+
+            <EditText
+                android:id="@+id/txtTwo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text=""
+                android:maxLength="1"
+                android:inputType="number"
+                android:textColor="@color/vgn_color"
+                android:background="@drawable/bg_edittext_single_box"></EditText>
+
+            <EditText
+                android:id="@+id/txtThree"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:textAlignment="center"
+                android:textColor="@color/vgn_color"
+                android:layout_weight="1"
+                android:maxLength="1"
+                android:inputType="number"
+                android:text=""
+                android:background="@drawable/bg_edittext_single_box"></EditText>
+
+            <EditText
+                android:id="@+id/txtFour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:text=""
+                android:maxLength="1"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/vgn_color"
+                android:layout_weight="1"
+                android:background="@drawable/bg_edittext_single_box">
+            </EditText>
+            <EditText
+                android:id="@+id/txtFive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:text=""
+                android:maxLength="1"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/vgn_color"
+                android:layout_weight="1"
+                android:background="@drawable/bg_edittext_single_box">
+            </EditText>
+
+            <EditText
+                android:id="@+id/txtSix"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/vgn_color"
+                android:text=""
+                android:maxLength="1"
+                android:inputType="number"
+                android:background="@drawable/bg_edittext_single_box">
+            </EditText>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnVerify"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fourty_five"
+            android:layout_marginStart="@dimen/twenty_five"
+            android:layout_marginTop="@dimen/sixty"
+            android:layout_marginEnd="@dimen/thirty"
+            android:background="@drawable/bg_submit_btn"
+            android:text="Verify"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sixteen"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/lnrOtp"
+            app:layout_constraintTop_toBottomOf="@+id/lnrOtp">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:paddingBottom="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/twenty"
+        android:layout_marginStart="@dimen/twenty"
+        android:padding="@dimen/eight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/bg_card_outer_line"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/imgclose"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="@dimen/ten"
+            android:padding="0dp"
+            android:src="@drawable/ic_close"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/lblReasonBlcok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/eight"
+            android:padding="@dimen/five"
+            android:text="Reason for Blocking"
+            android:textAllCaps="false"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/thirteen"
+            android:layout_marginTop="@dimen/fifteen"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgclose"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+        </TextView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/eight"
+            android:background="@drawable/bg_shadow_white"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnBlock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblReasonBlcok">
+
+                <EditText
+                    android:id="@+id/edReason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="Type your reason here..."
+                    android:inputType="textMultiLine"
+                    android:layout_marginTop="@dimen/five"
+                    android:maxLines="2"
+                    android:padding="@dimen/ten"
+                    android:paddingStart="@dimen/ten"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColorHint="@color/clr_txt_grey_light"
+                    android:textSize="@dimen/fifteen"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnBlock"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="120dp"
+            android:layout_marginBottom="30dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/bg_submit_btn"
+            android:padding="5dp"
+            android:text="BLock"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutBlock"
+          />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

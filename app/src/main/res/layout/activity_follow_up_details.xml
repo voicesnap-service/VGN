@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="5dp">
+
+    <EditText
+        android:id="@+id/txtFollowUpSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:layout_marginTop="@dimen/seven"
+        android:background="@drawable/bg_rectangle_edittextbox"
+        android:hint="Search... "
+        android:padding="@dimen/ten"
+        android:text=""
+        android:textColor="@color/transparent"
+        android:textColorHint="@color/clr_txt_grey_light"
+        android:textSize="@dimen/thirteen"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/thirteen"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFollowUpSearch"
+        app:layout_constraintWidth_default="percent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/FromDateLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rectangle_edittextbox"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".35">
+
+            <TextView
+                android:id="@+id/lblFromdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/clr_light_black"
+                android:textSize="@dimen/fourteen"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgcalenddar"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/calendar"
+                android:textColor="@color/black"
+                android:textSize="@dimen/thirteen"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/lblFromdate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lblFromdate" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ToDateLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fifteen"
+            android:background="@drawable/bg_rectangle_edittextbox"
+            app:layout_constraintBottom_toBottomOf="@+id/FromDateLayout"
+            app:layout_constraintLeft_toRightOf="@+id/FromDateLayout"
+            app:layout_constraintTop_toTopOf="@+id/FromDateLayout"
+            app:layout_constraintWidth_percent=".35">
+
+            <TextView
+                android:id="@+id/lblTodate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/clr_light_black"
+                android:textSize="@dimen/fourteen"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgcalendar"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/calendar"
+                android:textColor="@color/black"
+                android:textSize="@dimen/thirteen"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/lblTodate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lblTodate" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/imgsearch"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="@dimen/fifteen"
+            android:src="@drawable/search"
+            android:textColor="@color/black"
+            android:textSize="@dimen/thirteen"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/idNestedSV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutCategory">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFollowReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="@dimen/ten"
+                android:layout_marginBottom="@dimen/twenty"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lblNoRecordsFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:text="@string/txt_no_data_found"
+                android:textColor="@color/app_color"
+                android:textSize="14dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

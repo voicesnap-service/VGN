@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/menuIcon"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/eighty"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/lblVGN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    android:layout_marginStart="@dimen/eight"
+                    android:src="@drawable/email"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></ImageView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/lblSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/twenty"
+                android:layout_marginTop="@dimen/fifteen"
+                android:padding="@dimen/five"
+                android:text="@string/txt_SignUp"
+                android:textAllCaps="false"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/thirty"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/menuIcon" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty"
+                app:layout_constraintTop_toBottomOf="@+id/lblSignIn">
+
+                <RelativeLayout
+                    android:id="@+id/LayoutEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/twenty"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_marginEnd="@dimen/thirty_five"
+                    android:background="@drawable/bg_shadow_white"
+                    android:padding="@dimen/five"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/edMail"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fourty"
+                        android:layout_toRightOf="@+id/imgEmail"
+                        android:background="@android:color/transparent"
+                        android:hint="Email ID"
+                        android:inputType="textAutoComplete"
+                        android:textColorHint="@color/clr_txt_grey_light"
+                        android:textSize="@dimen/fifteen" />
+
+                    <ImageView
+                        android:id="@+id/imgEmail"
+                        android:layout_width="@dimen/twenty_three"
+                        android:layout_height="@dimen/twenty_three"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="@dimen/five"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginEnd="@dimen/ten"
+                        android:src="@drawable/ic_email_at"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/rytlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/twenty"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginEnd="@dimen/twenty"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/LayoutEmail">
+
+                    <TextView
+                        android:id="@+id/lblAgree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/five"
+                        android:padding="@dimen/five"
+                        android:text="@string/by_signing_up_you_are_agree_to_our_terms_amp_conidtions"
+                        android:textAllCaps="false"
+                        android:textColor="@color/clr_txt_grey_light"
+                        android:textSize="@dimen/twelve"
+                        android:textStyle="normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/LayoutEmail" />
+
+                    <TextView
+                        android:id="@+id/lblTermsAndCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/five"
+                        android:padding="@dimen/five"
+                        android:text="@string/terms_condition"
+                        android:textAllCaps="false"
+                        android:textColor="@color/btn_clr_blue"
+                        android:textSize="@dimen/twelve"
+                        android:textStyle="normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/LayoutEmail" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_marginStart="@dimen/thirty"
+                    android:layout_marginTop="@dimen/eighty"
+                    android:layout_marginEnd="@dimen/thirty_five"
+                    android:background="@drawable/bg_submit_btn"
+                    android:onClick="ClickNext"
+                    android:text="@string/txt_next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sixteen"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/LayoutEmail">
+
+                </androidx.appcompat.widget.AppCompatButton>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Activities.ShareDocuments">
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        android:id="@+id/layoutDescription"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_shadow_white"
+        android:paddingBottom="10dp">
+
+        <EditText
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/five"
+            android:background="@android:color/transparent"
+            android:hint="Type your description here..."
+            android:inputType="textMultiLine"
+            android:maxLines="6"
+            android:padding="@dimen/ten"
+            android:paddingStart="@dimen/ten"
+            android:textColor="@color/black"
+            android:textColorHint="@color/clr_txt_grey_light"
+            android:textSize="@dimen/fifteen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/lblNoRecordsFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="@string/txt_no_data_found"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDocument"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/btnShareDocument"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDescription" />
+
+    <Button
+        android:id="@+id/btnShareDocument"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/fifty"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_submit_btn"
+        android:padding="@dimen/seven"
+        android:text="Share"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fourteen"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
