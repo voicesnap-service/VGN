@@ -5,4 +5,8 @@
         android:id="@+id/FollowUp"
         android:title="FollowUp Details"/>
 
+    <item
+        android:id="@+id/notification"
+        android:title="@string/txt_notifications"/>
+
 </menu>

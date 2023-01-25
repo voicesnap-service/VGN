@@ -9,7 +9,7 @@ object ApiMethods {
     const val loginDetails = "app/get-login-details"
     const val CallListType = "app/get-calls-list-by-type"
     const val blockCustomer = "app/block-customer"
-    const val CallCustomer = "ivr/click-to-call"
+    const val CallCustomer = "ivr/click-to-call-from-app"
     const val GetAgentProfile = "app/get-agent-profile"
     const val GetNotifications = "app/get-notification-message"
     const val GetCallHistory = "app/get-call-history"
@@ -23,8 +23,10 @@ object ApiMethods {
     const val DeviceToken = "app/update-device-token"
     const val ProjectDocuments = "app/list-project-documents"
     const val SendDocuments = "app/send-documents-to-whatsapp"
-    const val templates = "app/list-templates"
-
-
-
+    const val templates = "app//list-templates-by-type"
+    const val templatesTypes = "app/get-whatsapp-template-type"
+    const val clickToCallDialNumbers = "ivr/get-numbers-to-dial-app"
+    const val customerDetails = "app/list-all-customers-details"
+    const val customerDetailsCount = "app/list-all-customers-details"
+    const val customerTypes = "app/get-customer-type-filter-app"
 }

@@ -15,9 +15,13 @@ object ApiRequestNames {
     const val Req_AgentID = "agent_id"
     const val Req_CustomerID = "customer_id"
     const val Req_TemplateId = "template_id"
+    const val Req_TemplateType = "template_type"
     const val Req_conference_id = "conference_id"
+    const val Req_text_array = "text_array"
     const val Req_LoginId = "login_id"
     const val Req_token = "token"
+    const val from_date = "from_date"
+    const val to_date = "to_date"
     const val Req_CustomerName = "customer_name"
     const val Req_CustomerEmail = "customer_email"
     const val Req_CusMobilenumber = "customer_mobile"
@@ -42,5 +46,6 @@ object ApiRequestNames {
     const val Req_Remarks = "remarks"
     const val Req_documentid = "document_id"
     const val Req_opentext = "Open_text"
+    const val customer_type = "customer_type"
 
 }

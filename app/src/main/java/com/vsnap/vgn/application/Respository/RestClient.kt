@@ -12,8 +12,8 @@ class RestClient {
      var apiInterfaces: ApiInterfaces
 
     companion object {
-        //const val BASE_URL = "http://smartcall.dialoutworks.com/v1/"
-        const val BASE_URL = "http://vgntalkdesk.dialoutworks.com/v1/"
+        //const val BASE_URL = "http://smartcall.dialoutworks.com/v1/"  // testing
+        const val BASE_URL = "http://vgntalkdesk.dialoutworks.com/v1/"  // live
     }
 
     init {

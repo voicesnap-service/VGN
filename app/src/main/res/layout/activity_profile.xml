@@ -289,8 +289,6 @@
                 android:layout_marginEnd="@dimen/twenty"
                 android:layout_marginBottom="@dimen/ten"
                 android:orientation="vertical"
-                android:padding="@dimen/five"
-
                 android:layout_marginStart="@dimen/twenty"
                 app:layout_constraintTop_toBottomOf="@+id/lblAvailabilityType"
                 app:layout_constraintStart_toStartOf="parent"/>

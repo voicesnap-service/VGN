@@ -42,6 +42,8 @@ class RecentCallAdapter(
         var imgArrowdown: ImageView
         var rytrecording: RelativeLayout
         var lnrCustomerInfo: LinearLayout
+        var lblRecentCallStatus: TextView
+        var rytRecentCallStatus: RelativeLayout
         init {
             lblMobileNumber = itemView.findViewById(R.id.lblMobileNumber)
             lblProjectName = itemView.findViewById(R.id.lblProjectName)
@@ -57,6 +59,8 @@ class RecentCallAdapter(
             rytShare = itemView.findViewById(R.id.rytShare)
             rytrecording = itemView.findViewById(R.id.rytrecording)
             lnrCustomerInfo = itemView.findViewById(R.id.lnrCustomerInfo)
+            lblRecentCallStatus = itemView.findViewById(R.id.lblRecentCallStatus)
+            rytRecentCallStatus = itemView.findViewById(R.id.rytRecentCallStatus)
 
         }
     }
@@ -85,9 +89,18 @@ class RecentCallAdapter(
             holder.lblMobileNumber!!.setText(data.cusomer_mobile)
 
         }
+
         holder.lblProjectName!!.setText(data.project_name)
         holder.lblRecentCallTime!!.setText(data.recent_call_time)
         holder.lblAgentName!!.setText(data.agent_name)
+
+        if(!data.recent_call_status.equals("")){
+            holder.rytRecentCallStatus!!.visibility = View.VISIBLE
+            holder.lblRecentCallStatus!!.setText(data.recent_call_status)
+        }
+        else{
+            holder.rytRecentCallStatus!!.visibility = View.GONE
+        }
 
         holder.rytMenuIcon.visibility = if (isExpanded) View.VISIBLE else View.GONE
         holder.rytCustomerINFO.isActivated = isExpanded

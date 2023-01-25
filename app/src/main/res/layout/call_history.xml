@@ -97,11 +97,10 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layoutAgent"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintWidth_percent=".4">
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
                                 android:id="@+id/imgAgent"
@@ -182,6 +181,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constProject"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/layoutSubjectType"
@@ -216,9 +216,73 @@
                             app:layout_constraintLeft_toRightOf="@+id/imgProject"
                             app:layout_constraintTop_toTopOf="@+id/imgProject" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/rytRecentCallStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/constProject">
+
+                        <ImageView
+                            android:src="@drawable/call_status"
+                            android:id="@+id/lblRecent"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/lblRecentCallStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toRightOf="@+id/lblRecent"
+                            android:text=""
+                            android:textColor="@color/clr_green"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/rytPlayVoice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/rytRecentCallStatus"
+                        android:layout_marginRight="10dp">
+
+                        <ImageView
+                            android:id="@+id/imgPlayVoice"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/voice_play_icon" />
+
+                        <TextView
+                            android:textSize="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imgPlayVoice"
+                            android:layout_centerVertical="true"
+                            android:text="Play Voice"
+                            android:textColor="@color/black" />
+
+
+                    </RelativeLayout>
+
+
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
+
+
 
         <RelativeLayout
             android:id="@+id/rytCustomerInfo"

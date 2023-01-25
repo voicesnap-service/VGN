@@ -80,7 +80,7 @@ class UpdateCustomerInfo : AppCompatActivity() {
     var FromDate: String? = null
     val myCalendar = Calendar.getInstance()
     var cal = Calendar.getInstance()
-    var mTimePicker: TimePickerDialog?=null
+    var mTimePicker: TimePickerDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -182,7 +182,7 @@ class UpdateCustomerInfo : AppCompatActivity() {
     }
 
     @OnClick(R.id.txtFollowUpTime)
-    fun FollowupTimeClick(){
+    fun FollowupTimeClick() {
         val cal = Calendar.getInstance()
 
 
@@ -191,7 +191,13 @@ class UpdateCustomerInfo : AppCompatActivity() {
             cal.set(Calendar.MINUTE, minute)
             txtFollowUpTime!!.text = SimpleDateFormat("HH:mm").format(cal.time)
         }
-        TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), false).show()
+        TimePickerDialog(
+            this,
+            timeSetListener,
+            cal.get(Calendar.HOUR_OF_DAY),
+            cal.get(Calendar.MINUTE),
+            false
+        ).show()
     }
 
     @OnClick(R.id.txtFollowUpdate)
@@ -316,7 +322,7 @@ class UpdateCustomerInfo : AppCompatActivity() {
 
         var token = SharedPreference.getSHToken(this)
 
-        dashboardViewmodel!!.updateCustomerInfo(jsonObject,token!!, this)
+        dashboardViewmodel!!.updateCustomerInfo(jsonObject, token!!, this)
 
     }
 

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CircleImageView="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_white"
+    android:padding="@dimen/five">
+
+    <LinearLayout
+        android:id="@+id/lnrCustomerInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_outer_line"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/eight"
+        android:padding="@dimen/three"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/rytCustomerINFO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/rytRecentNotification1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/lblMobileNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/two"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:padding="@dimen/two"
+                    android:text="Email - ID"
+                    android:textColor="@color/clr_email"
+                    android:textSize="@dimen/thirteen"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/Viewlineone1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_below="@+id/lblMobileNumber"
+                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_marginEnd="@dimen/five"
+                    android:background="@color/stroke_grey_light"
+                    android:visibility="visible">
+
+                </View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Viewlineone1"
+                    android:paddingBottom="@dimen/ten">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/LayoutNameProject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_default="percent">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:id="@+id/layoutAgent">
+
+                            <ImageView
+                                android:id="@+id/imgAgent"
+                                android:layout_width="@dimen/thirty"
+                                android:layout_height="@dimen/twenty_five"
+                                android:layout_marginLeft="@dimen/eight"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="12dp"
+                                android:src="@drawable/customer_agent"
+                                android:visibility="visible"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                />
+
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/lblAgentName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/three"
+                                android:text=" ksdjsad asjhdsajhd ahsdjasfd sajdfasf asjhf"
+                                android:textColor="@color/clr_text"
+                                android:textSize="@dimen/thirteen"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/imgAgent"
+                                app:layout_constraintLeft_toRightOf="@+id/imgAgent"
+                                app:layout_constraintTop_toTopOf="@+id/imgAgent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginEnd="2dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layoutAgent">
+                            <ImageView
+                                android:id="@+id/imgProject"
+                                android:layout_width="@dimen/twenty"
+                                android:layout_height="@dimen/twenty"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="@dimen/eight"
+                                android:layout_marginRight="12dp"
+                                android:src="@drawable/project_icon"
+                                android:visibility="visible"
+                                app:layout_constraintRight_toLeftOf="@+id/lblProjectName"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/lblProjectName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/three"
+                                android:layout_marginEnd="@dimen/twenty"
+                                android:text="West Mambalam Apartments"
+                                android:textColor="@color/clr_text"
+                                android:textSize="@dimen/thirteen"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/imgProject"
+                                app:layout_constraintTop_toTopOf="@+id/imgProject"
+                                app:layout_constraintLeft_toRightOf="@+id/imgProject"
+                                />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutSubjectType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/LayoutNameProject"
+                        android:layout_marginStart="@dimen/ten"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintWidth_default="percent">
+
+                        <ImageView
+                            android:id="@+id/imgLastCall"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
+                            android:layout_marginTop="@dimen/eight"
+                            android:layout_marginRight="12dp"
+                            android:src="@drawable/last_call_time"
+                            android:visibility="visible"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent=".05" />
+
+                        <TextView
+                            android:id="@+id/lblRecentCallTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/three"
+                            android:text=""
+                            android:textColor="@color/clr_text"
+                            android:textSize="@dimen/thirteen"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/imgLastCall"
+                            app:layout_constraintLeft_toRightOf="@+id/imgLastCall"
+                            app:layout_constraintTop_toTopOf="@+id/imgLastCall"
+                            app:layout_constraintWidth_percent=".6" />
+
+                        <ImageView
+                            android:id="@+id/imgArrowdown"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
+                            android:layout_below="@+id/layoutSubjectType"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_arrow_down_blue"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="@+id/lblRecentCallTime"
+                            app:layout_constraintLeft_toRightOf="@+id/lblRecentCallTime"
+                            app:layout_constraintTop_toTopOf="@+id/lblRecentCallTime"
+                            app:layout_constraintWidth_percent=".2" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/lblRecentCallStatus"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/layoutSubjectType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/clr_green"
+                        android:text=""/>
+
+                    <ImageView
+                        android:id="@+id/imgArrowdown2"
+                        android:layout_width="@dimen/twenty_five"
+                        android:layout_height="@dimen/twenty_five"
+                        android:layout_below="@+id/layoutSubjectType"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="@dimen/five"
+                        android:src="@drawable/ic_arrow_down_blue"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rytMenuIcon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/three"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/lnrMenuIcons1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginBottom="@dimen/five"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/five"
+                android:weightSum="3">
+
+                <RelativeLayout
+                    android:id="@+id/rytCallHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/imgCall"
+                        android:layout_width="@dimen/thirty"
+                        android:layout_height="@dimen/thirty"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginBottom="@dimen/five"
+                        android:src="@drawable/call_history" />
+
+                    <TextView
+                        android:id="@+id/llblCallHistory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgCall"
+                        android:layout_centerHorizontal="true"
+                        android:text="History"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rytUpdateInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/imgUpdate"
+                        android:layout_width="@dimen/thirty"
+                        android:layout_height="@dimen/thirty"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginBottom="@dimen/five"
+                        android:src="@drawable/updateinfo" />
+
+                    <TextView
+                        android:id="@+id/lblUpdateInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgUpdate"
+                        android:layout_centerHorizontal="true"
+                        android:text="Play Voice"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rytCallCustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/imgcall"
+                        android:layout_width="@dimen/twenty_five"
+                        android:layout_height="@dimen/twenty_five"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginBottom="@dimen/five"
+                        android:src="@drawable/call_customer" />
+
+                    <TextView
+                        android:id="@+id/lblCallCustomer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgcall"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/five"
+                        android:text="Call"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnrMenuIcons2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginBottom="@dimen/five"
+                android:orientation="horizontal"
+                android:layout_below="@+id/lnrMenuIcons1"
+                android:paddingStart="@dimen/five"
+                android:weightSum="3">
+
+                <RelativeLayout
+                    android:id="@+id/rytBlock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.1"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/imgBlock"
+                        android:layout_width="@dimen/twenty_five"
+                        android:layout_height="@dimen/twenty_five"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="@dimen/thirteen"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginBottom="@dimen/five"
+                        android:src="@drawable/block" />
+
+                    <TextView
+                        android:id="@+id/lblBlock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgBlock"
+                        android:layout_centerHorizontal="true"
+                        android:text="Block"
+                        android:layout_marginStart="@dimen/ten"
+
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rytShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.3"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/imgShare"
+                        android:layout_width="@dimen/twenty_five"
+                        android:layout_height="@dimen/twenty_five"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginBottom="@dimen/five"
+                        android:src="@drawable/share" />
+
+                    <TextView
+                        android:id="@+id/lblShareDoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgShare"
+                        android:layout_centerHorizontal="true"
+                        android:text="Share Docs"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rytrecording"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/imgRecording"
+                        android:layout_width="@dimen/twenty_five"
+                        android:layout_height="@dimen/twenty_five"
+                        android:layout_centerInParent="true"
+                        android:paddingBottom="@dimen/seven"
+                        android:src="@drawable/voice_play_icon" />
+
+                    <TextView
+                        android:id="@+id/lblrecording"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgRecording"
+                        android:layout_centerHorizontal="true"
+                        android:text="Play Voice"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

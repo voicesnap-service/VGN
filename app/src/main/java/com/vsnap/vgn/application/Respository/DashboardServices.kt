@@ -35,6 +35,10 @@ class DashboardServices {
     var SendWhatsAppDocumentMutableLiveData: MutableLiveData<StatusMessageResponse?>
     var GetNotificationTotalCountMutableData: MutableLiveData<GetTotalCountResponse?>
     var getTemplatesMutableData: MutableLiveData<TemplatesData?>
+    var getTemplatesTypeMutableData: MutableLiveData<TemplatesType?>
+    var getClickToCallDialNumbers: MutableLiveData<ClickToCallDialNumbers?>
+    var getCustomerDetails: MutableLiveData<CustomerDetails?>
+    var getCustomerTypes: MutableLiveData<CustomerType?>
 
     init {
         client_auth = RestClient()
@@ -57,6 +61,10 @@ class DashboardServices {
         GetNotificationTotalCountMutableData = MutableLiveData()
         CallHistoryCountMutableLiveData = MutableLiveData()
         getTemplatesMutableData = MutableLiveData()
+        getTemplatesTypeMutableData = MutableLiveData()
+        getClickToCallDialNumbers = MutableLiveData()
+        getCustomerDetails = MutableLiveData()
+        getCustomerTypes = MutableLiveData()
     }
 
     fun GetCallsListByType(
@@ -66,8 +74,11 @@ class DashboardServices {
         type: String,
         token: String,
         count: Int, loginId: Int,
+        fromDate: String,todate: String,
         activity: Activity?
     ) {
+
+        Log.d("FromDate",fromDate)
         progressDialog = CustomLoading.createProgressDialog(activity)
         progressDialog!!.show()
         client_auth!!.apiInterfaces!!.GetCallListByType(
@@ -77,6 +88,8 @@ class DashboardServices {
             count,
             type,
             loginId,
+            fromDate,
+            todate,
             token
         )
             ?.enqueue(object : Callback<RecentCallsResponse?> {
@@ -175,15 +188,54 @@ class DashboardServices {
     val NotificationListMutableData: LiveData<NotificationResponse?>
         get() = NotificationMutableLiveData
 
+    fun GetCustomerDetails(activity: Activity?, token: String ,limit:Int,offset: Int,keyeword:String,count:Int,type: String,fromDate: String,todate: String) {
+        progressDialog = CustomLoading.createProgressDialog(activity)
+        progressDialog!!.show()
+        Log.d("customerDetails", "test")
+        client_auth!!.apiInterfaces!!.GetCustomerDetails(token,limit,offset,keyeword,count,type,fromDate,todate)
+            ?.enqueue(object : Callback<CustomerDetails?> {
+                override fun onResponse(
+                    call: Call<CustomerDetails?>,
+                    response: Response<CustomerDetails?>
+                ) {
+                    progressDialog!!.dismiss()
+                    Log.d(
+                        "customerDetails",
+                        response.code().toString() + " - " + response.toString()
+                    )
+                    if (response.code() == 200 || response.code() == 201) {
+                        if (response.body() != null) {
+                            val status = response.body()!!.status
+                            Log.d("customerDetails", status.toString())
+                            getCustomerDetails.postValue(response.body())
+
+                        }
+                    } else if (response.code() == 400 || response.code() == 404 || response.code() == 500) {
+                         progressDialog!!.dismiss()
+                        getCustomerDetails.postValue(null)
+
+                    } else {
+                        getCustomerDetails.postValue(null)
+
+                    }
+                }
+
+                override fun onFailure(call: Call<CustomerDetails?>, t: Throwable) {
+                     progressDialog!!.dismiss()
+                    getCustomerDetails.postValue(null)
+                    t.printStackTrace()
+                }
+            })
+    }
+
+    val CustomerDetailsMutableData: LiveData<CustomerDetails?>
+        get() = getCustomerDetails
 
 
+    fun GetTemplates(activity: Activity?, token: String , template_type :String) {
 
-    fun GetTemplates(activity: Activity?, token: String
-    ) {
-//        progressDialog = CustomLoading.createProgressDialog(activity)
-//        progressDialog!!.show()
         Log.d("testRequesta", "test")
-        client_auth!!.apiInterfaces!!.GetTemplates(token)
+        client_auth!!.apiInterfaces!!.GetTemplates(token,template_type)
             ?.enqueue(object : Callback<TemplatesData?> {
                 override fun onResponse(
                     call: Call<TemplatesData?>,
@@ -222,6 +274,141 @@ class DashboardServices {
 
     val TemplatesMutableData: LiveData<TemplatesData?>
         get() = getTemplatesMutableData
+
+
+
+    fun GetTemplateTypes(activity: Activity?,token: String) {
+        Log.d("testRequesta", "test")
+        client_auth!!.apiInterfaces!!.GetTemplatesTypes(token)
+            ?.enqueue(object : Callback<TemplatesType?> {
+                override fun onResponse(
+                    call: Call<TemplatesType?>,
+                    response: Response<TemplatesType?>
+                ) {
+                    //progressDialog!!.dismiss()
+                    Log.d(
+                        "NotificationResponse",
+                        response.code().toString() + " - " + response.toString()
+                    )
+                    if (response.code() == 200 || response.code() == 201) {
+                        if (response.body() != null) {
+                            val status = response.body()!!.status
+                            Log.d("testNotiResponse", status.toString())
+
+                            getTemplatesTypeMutableData.postValue(response.body())
+
+                        }
+                    } else if (response.code() == 400 || response.code() == 404 || response.code() == 500) {
+                        // progressDialog!!.dismiss()
+                        getTemplatesTypeMutableData.postValue(null)
+
+                    } else {
+                        getTemplatesTypeMutableData.postValue(null)
+
+                    }
+                }
+
+                override fun onFailure(call: Call<TemplatesType?>, t: Throwable) {
+                    // progressDialog!!.dismiss()
+                    getTemplatesTypeMutableData.postValue(null)
+                    t.printStackTrace()
+                }
+            })
+    }
+
+    val TemplatesTypesMutableData: LiveData<TemplatesType?>
+        get() = getTemplatesTypeMutableData
+
+
+
+
+    fun GetCustomerTypes(activity: Activity?,token: String) {
+        Log.d("testRequesta", "test")
+        client_auth!!.apiInterfaces!!.GetCustomerTypes(token)
+            ?.enqueue(object : Callback<CustomerType?> {
+                override fun onResponse(
+                    call: Call<CustomerType?>,
+                    response: Response<CustomerType?>
+                ) {
+                    //progressDialog!!.dismiss()
+                    Log.d(
+                        "NotificationResponse",
+                        response.code().toString() + " - " + response.toString()
+                    )
+                    if (response.code() == 200 || response.code() == 201) {
+                        if (response.body() != null) {
+                            val status = response.body()!!.status
+                            Log.d("testNotiResponse", status.toString())
+
+                            getCustomerTypes.postValue(response.body())
+
+                        }
+                    } else if (response.code() == 400 || response.code() == 404 || response.code() == 500) {
+                        // progressDialog!!.dismiss()
+                        getCustomerTypes.postValue(null)
+
+                    } else {
+                        getCustomerTypes.postValue(null)
+
+                    }
+                }
+
+                override fun onFailure(call: Call<CustomerType?>, t: Throwable) {
+                    // progressDialog!!.dismiss()
+                    getCustomerTypes.postValue(null)
+                    t.printStackTrace()
+                }
+            })
+    }
+
+    val CustomerTypesMutableData: LiveData<CustomerType?>
+        get() = getCustomerTypes
+
+
+
+
+    fun GetClickToCallDialNumbers(activity: Activity?,token: String, customer_id: Int
+    ) {
+        Log.d("testRequesta", "test")
+        client_auth!!.apiInterfaces!!.GetDialNumbers(token,customer_id)
+            ?.enqueue(object : Callback<ClickToCallDialNumbers?> {
+                override fun onResponse(
+                    call: Call<ClickToCallDialNumbers?>,
+                    response: Response<ClickToCallDialNumbers?>
+                ) {
+                    //progressDialog!!.dismiss()
+                    Log.d(
+                        "dialNumbers",
+                        response.code().toString() + " - " + response.toString()
+                    )
+                    if (response.code() == 200 || response.code() == 201) {
+                        if (response.body() != null) {
+                            val status = response.body()!!.status
+                            Log.d("testNotiResponse", status.toString())
+
+                            getClickToCallDialNumbers.postValue(response.body())
+
+                        }
+                    } else if (response.code() == 400 || response.code() == 404 || response.code() == 500) {
+                        // progressDialog!!.dismiss()
+                        getClickToCallDialNumbers.postValue(null)
+
+                    } else {
+                        getClickToCallDialNumbers.postValue(null)
+
+                    }
+                }
+
+                override fun onFailure(call: Call<ClickToCallDialNumbers?>, t: Throwable) {
+                    // progressDialog!!.dismiss()
+                    getClickToCallDialNumbers.postValue(null)
+                    t.printStackTrace()
+                }
+            })
+    }
+
+    val ClickToCallDialNumbersMutableData: LiveData<ClickToCallDialNumbers?>
+        get() = getClickToCallDialNumbers
 
 
     fun GetNotificationTotalCount(count: Int, login_id: Int, token: String, activity: Activity?) {
@@ -825,35 +1012,80 @@ class DashboardServices {
         type: String,
         loginId: Int,
         token: String,
-        activity: Activity?
+        activity: Activity?,
+        method_type : String
     ) {
-        client_auth!!.apiInterfaces!!.GetCallListCount(count, type, loginId, token)
-            ?.enqueue(object : Callback<GetTotalCountResponse?> {
-                override fun onResponse(
-                    call: Call<GetTotalCountResponse?>,
-                    response: Response<GetTotalCountResponse?>
-                ) {
-                    Log.d("GetTotalCallCount :", response.code().toString() + " - " + response.toString())
-                    if (response.code() == 200 || response.code() == 201) {
-                        if (response.body() != null) {
-                            val status = response.body()!!.status
-                            GetCallListCountMutableLiveData.postValue(response.body())
+
+        if(method_type.equals("Calls")) {
+            client_auth!!.apiInterfaces!!.GetCallListCount(count, type, loginId, token)
+                ?.enqueue(object : Callback<GetTotalCountResponse?> {
+                    override fun onResponse(
+                        call: Call<GetTotalCountResponse?>,
+                        response: Response<GetTotalCountResponse?>
+                    ) {
+                        Log.d(
+                            "GetTotalCallCount :",
+                            response.code().toString() + " - " + response.toString()
+                        )
+                        if (response.code() == 200 || response.code() == 201) {
+                            if (response.body() != null) {
+                                val status = response.body()!!.status
+                                GetCallListCountMutableLiveData.postValue(response.body())
+
+                            }
+                        } else if (response.code() == 400 || response.code() == 404 || response.code() == 500) {
+                            GetCallListCountMutableLiveData.postValue(null)
+
+                        } else {
+                            GetCallListCountMutableLiveData.postValue(null)
 
                         }
-                    } else if (response.code() == 400 || response.code() == 404 || response.code() == 500) {
-                        GetCallListCountMutableLiveData.postValue(null)
-
-                    } else {
-                        GetCallListCountMutableLiveData.postValue(null)
-
                     }
-                }
 
-                override fun onFailure(call: Call<GetTotalCountResponse?>, t: Throwable) {
-                    GetCallListCountMutableLiveData.postValue(null)
-                    t.printStackTrace()
-                }
-            })
+                    override fun onFailure(call: Call<GetTotalCountResponse?>, t: Throwable) {
+                        GetCallListCountMutableLiveData.postValue(null)
+                        t.printStackTrace()
+                    }
+                })
+
+        }
+
+        else{
+            client_auth!!.apiInterfaces!!.GetCustomerListCount(count, type, loginId, token)
+                ?.enqueue(object : Callback<GetTotalCountResponse?> {
+                    override fun onResponse(
+                        call: Call<GetTotalCountResponse?>,
+                        response: Response<GetTotalCountResponse?>
+                    ) {
+                        Log.d(
+                            "GetTotalCallCount :",
+                            response.code().toString() + " - " + response.toString()
+                        )
+                        if (response.code() == 200 || response.code() == 201) {
+                            if (response.body() != null) {
+                                val status = response.body()!!.status
+                                GetCallListCountMutableLiveData.postValue(response.body())
+
+                            }
+                        } else if (response.code() == 400 || response.code() == 404 || response.code() == 500) {
+                            GetCallListCountMutableLiveData.postValue(null)
+
+                        } else {
+                            GetCallListCountMutableLiveData.postValue(null)
+
+                        }
+                    }
+
+                    override fun onFailure(call: Call<GetTotalCountResponse?>, t: Throwable) {
+                        GetCallListCountMutableLiveData.postValue(null)
+                        t.printStackTrace()
+                    }
+                })
+
+        }
+
+
+
     }
 
     val GetCallCountLiveData: LiveData<GetTotalCountResponse?>

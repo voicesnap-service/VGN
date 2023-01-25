@@ -2,6 +2,8 @@ package com.vsnap.vgn.application.Activities
 
 import android.app.ActionBar
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -29,12 +31,14 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.JsonObject
 import com.vsnap.vgn.application.Adapters.RecentCallAdapter
 import com.vsnap.vgn.application.Interface.RecentCardClickListener
+import com.vsnap.vgn.application.Modal.DialNumberDetails
 import com.vsnap.vgn.application.Modal.RecentCallsData
 import com.vsnap.vgn.application.R
 import com.vsnap.vgn.application.Respository.ApiRequestNames
 import com.vsnap.vgn.application.Utils.*
 import com.vsnap.vgn.application.Utils.CommonUtil.UserData
 import com.vsnap.vgn.application.ViewModel.Dashboard
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -120,8 +124,30 @@ class DashboardHome : AppCompatActivity() {
     var imgsearch: ImageView? = null
 
     @JvmField
+    @BindView(R.id.btnSearch)
+    var btnSearch: TextView? = null
+
+
+
+    @JvmField
     @BindView(R.id.txtFollowUpSearch)
     var txtSearch: EditText? = null
+
+    @JvmField
+    @BindView(R.id.lnrFromDate)
+    var lnrFromDate: LinearLayout? = null
+
+    @JvmField
+    @BindView(R.id.lnrToDate)
+    var lnrToDate: LinearLayout? = null
+
+    @JvmField
+    @BindView(R.id.lblToDate)
+    var lblToDate: TextView? = null
+
+    @JvmField
+    @BindView(R.id.lblFromDate)
+    var lblFromDate: TextView? = null
 
     var deviceToken = ""
     var dashboardViewmodel: Dashboard? = null
@@ -159,10 +185,21 @@ class DashboardHome : AppCompatActivity() {
     var UserLogin = false
     var CallType = true
 
+    var customer_id_to_call : Int = 0
+    var NumbersDetailsList: ArrayList<DialNumberDetails> = ArrayList()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dahboard_home)
         ButterKnife.bind(this)
+
+        val time = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("dd/MM/yyyy")
+        val current = formatter.format(time)
+        lblFromDate!!.setText(current)
+        lblToDate!!.setText(current)
 
         dashboardViewmodel = ViewModelProvider(this).get(Dashboard::class.java)
         dashboardViewmodel!!.init()
@@ -201,10 +238,9 @@ class DashboardHome : AppCompatActivity() {
                 val status = response.status
                 val message = response.message
                 TotalCountData = response.data!!.size
-                Log.d("TotalCountData",TotalCountData.toString())
+                Log.d("TotalCountData", TotalCountData.toString())
                 ApiCall(Offset)
-            }
-            else {
+            } else {
                 ApiCall(Offset)
             }
         }
@@ -216,28 +252,26 @@ class DashboardHome : AppCompatActivity() {
                 if (status == 1) {
                     Log.d("CallType", CallType.toString())
                     RecentCallListdata.clear()
-                    if(CallType){
+                    if (CallType) {
                         RecentCallListdata = response.data!!
 
-                        if(Offset == 0){
+                        if (Offset == 0) {
                             OverAllCallList.clear();
                             OverAllCallList.addAll(RecentCallListdata)
-                        }
-                        else{
+                        } else {
                             OverAllCallList.addAll(RecentCallListdata)
                         }
 
-                        if(OverAllCallList.size > 0){
+                        if (OverAllCallList.size > 0) {
                             lblNoRecordsFound!!.visibility = View.GONE
                             recyclerCustomer!!.visibility = View.VISIBLE
-                        }
-                        else{
+                        } else {
                             lblNoRecordsFound!!.visibility = View.VISIBLE
                             recyclerCustomer!!.visibility = View.GONE
                         }
 
-                        Log.d("OverAllCAllList2",OverAllCallList.size.toString())
-                        recentCallAdapter = RecentCallAdapter(OverAllCallList,"Recent", this,
+                        Log.d("OverAllCAllList2", OverAllCallList.size.toString())
+                        recentCallAdapter = RecentCallAdapter(OverAllCallList, "Recent", this,
                             object : RecentCardClickListener {
                                 override fun onClick(
                                     holder: RecentCallAdapter.MyViewHolder,
@@ -250,7 +284,14 @@ class DashboardHome : AppCompatActivity() {
                                     )
                                     Log.d("Conf_id", data.conference_id.toString())
                                     holder.rytCallHistory.setOnClickListener({
-                                        val intent = Intent(this@DashboardHome, CallHistory::class.java)
+
+                                        SharedPreference.putCustomerDetails(
+                                            this@DashboardHome,
+                                            data.customer_id.toString(),
+                                            data.agent_id!!
+                                        )
+                                        val intent =
+                                            Intent(this@DashboardHome, CallHistory::class.java)
                                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                         startActivity(intent)
@@ -264,7 +305,10 @@ class DashboardHome : AppCompatActivity() {
                                         )
 
                                         val intent =
-                                            Intent(this@DashboardHome, UpdateCustomerInfo::class.java)
+                                            Intent(
+                                                this@DashboardHome,
+                                                UpdateCustomerInfo::class.java
+                                            )
                                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                         startActivity(intent)
@@ -281,22 +325,26 @@ class DashboardHome : AppCompatActivity() {
                                         Log.d("Conf_id", data.conference_id.toString())
 
 
-                                        val intent = Intent(this@DashboardHome, ShareDocuments::class.java)
+                                        val intent =
+                                            Intent(this@DashboardHome, ShareDocuments::class.java)
                                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                                        intent.putExtra("Projectid",data.project_id)
-                                        intent.putExtra("CustomerID",data.customer_id)
-                                        intent.putExtra("ConfID",data.conference_id)
+                                        intent.putExtra("Projectid", data.project_id)
+                                        intent.putExtra("CustomerID", data.customer_id)
+                                        intent.putExtra("ConfID", data.conference_id)
 
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                         startActivity(intent)
                                     })
 
                                     holder.rytCallCustomer.setOnClickListener({
+
+
                                         SharedPreference.putCustomerDetails(
                                             this@DashboardHome,
                                             data.customer_id.toString(),
                                             data.agent_id!!
                                         )
+
                                         ClickToCall(data)
                                     })
                                     holder.rytBlock.setOnClickListener({
@@ -319,7 +367,8 @@ class DashboardHome : AppCompatActivity() {
 
                                         VoiceFilePath = data.file_recording
                                         if (VoiceFilePath.isNullOrEmpty()) {
-                                            AlertFinishOk("No Voice File")
+                                            Toast.makeText(applicationContext,"No voice file",Toast.LENGTH_SHORT).show()
+                                            //AlertFinishOk("No Voice File")
                                         } else {
                                             PopUpVoicePlay(it, id.toString())
                                         }
@@ -333,31 +382,28 @@ class DashboardHome : AppCompatActivity() {
                         recyclerCustomer!!.adapter = recentCallAdapter
                         recentCallAdapter!!.notifyDataSetChanged()
 
-                    }
-                    else {
-                        Log.d("Missed","Missed")
+                    } else {
+                        Log.d("Missed", "Missed")
                         RecentCallListdata = response.data!!
 
-                        if(Offset == 0){
+                        if (Offset == 0) {
                             OverAllCallList.clear();
                             OverAllCallList.addAll(RecentCallListdata)
-                        }
-                        else{
+                        } else {
                             OverAllCallList.addAll(RecentCallListdata)
                         }
 
-                        Log.d("OverAllCallList_size",OverAllCallList.size.toString())
+                        Log.d("OverAllCallList_size", OverAllCallList.size.toString())
 
-                        if(OverAllCallList.size > 0){
+                        if (OverAllCallList.size > 0) {
                             lblNoRecordsFound!!.visibility = View.GONE
                             recyclerCustomer!!.visibility = View.VISIBLE
-                        }
-                        else{
+                        } else {
                             lblNoRecordsFound!!.visibility = View.VISIBLE
                             recyclerCustomer!!.visibility = View.GONE
                         }
 
-                        recentCallAdapter = RecentCallAdapter(OverAllCallList,"Missed", this,
+                        recentCallAdapter = RecentCallAdapter(OverAllCallList, "Missed", this,
                             object : RecentCardClickListener {
                                 override fun onClick(
                                     holder: RecentCallAdapter.MyViewHolder,
@@ -369,6 +415,12 @@ class DashboardHome : AppCompatActivity() {
                                         data.agent_id.toString()
                                     )
                                     holder.rytCallHistory.setOnClickListener({
+
+                                        SharedPreference.putCustomerDetails(
+                                            this@DashboardHome,
+                                            data.customer_id.toString(),
+                                            data.agent_id!!
+                                        )
                                         val intent =
                                             Intent(this@DashboardHome, CallHistory::class.java)
                                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -440,10 +492,10 @@ class DashboardHome : AppCompatActivity() {
 
                                         VoiceFilePath = data.file_recording
                                         if (VoiceFilePath.isNullOrEmpty()) {
-                                            AlertFinishOk("No Voice File")
+                                            Toast.makeText(applicationContext,"No voice file",Toast.LENGTH_SHORT).show()
+                                            //AlertFinishOk("No Voice File")
                                         } else {
                                             PopUpVoicePlay(it, id.toString())
-
                                         }
 
                                     })
@@ -453,11 +505,13 @@ class DashboardHome : AppCompatActivity() {
                         recyclerCustomer!!.layoutManager = mLayoutManager
                         recyclerCustomer!!.itemAnimator = DefaultItemAnimator()
                         recyclerCustomer!!.adapter = recentCallAdapter
+                        recyclerCustomer!!.scrollToPosition(0)
                         recentCallAdapter!!.notifyDataSetChanged()
+
                     }
 
                 } else {
-                    if(Offset == 0) {
+                    if (Offset == 0) {
                         lblNoRecordsFound!!.visibility = View.VISIBLE
                         recyclerCustomer!!.visibility = View.GONE
                     }
@@ -478,10 +532,10 @@ class DashboardHome : AppCompatActivity() {
                 oldScrollY: Int
             ) {
                 if (scrollY == v.getChildAt(0).measuredHeight - v.measuredHeight) {
-                    Offset = Offset+PageLimit
+                    Offset = Offset + PageLimit
 
                     Log.d("OffsetSize", Offset.toString())
-                    if(Offset < TotalCountData){
+                    if (Offset < TotalCountData) {
                         ApiCall(Offset)
                     }
 
@@ -500,7 +554,6 @@ class DashboardHome : AppCompatActivity() {
                 }
             } else {
                 CommonUtil.ApiAlert(this, "Something went wrong")
-
             }
         }
         dashboardViewmodel!!.CallCustomerLiveData!!.observe(this) { response ->
@@ -516,9 +569,80 @@ class DashboardHome : AppCompatActivity() {
                 CommonUtil.ApiAlert(this, "Something went wrong")
             }
         }
+
+        dashboardViewmodel!!.DialNumbersLiveData!!.observe(this) { response ->
+            if (response != null) {
+                val status = response.status
+                val message = response.message
+                var token = SharedPreference.getSHToken(this)
+                Log.d("DialNumbers",response.data!!.toString())
+
+                NumbersDetailsList.clear()
+                NumbersDetailsList = response.data!!
+
+                if (status == 1) {
+                    val jsonObject = JsonObject()
+                    jsonObject.addProperty(ApiRequestNames.Req_CustomerID, customer_id_to_call)
+                    jsonObject.addProperty(ApiRequestNames.Req_CustomerNumber,NumbersDetailsList[0].customer_number)
+                    dashboardViewmodel!!.callCustomer(jsonObject, token!!, this)
+                }
+                else if(status == 2) {
+                    val number1 = NumbersDetailsList[0].customer_number
+                    val number2 =NumbersDetailsList[0].alternate_number1
+                    customPopupNumbers(number1!!,number2!!)
+
+                }
+                else{
+                    CommonUtil.ApiAlert(this, message)
+                }
+            } else {
+                CommonUtil.ApiAlert(this, "Something went wrong")
+            }
+        }
     }
+    override fun onResume() {
+        super.onResume()
+        imgSettings!!.setImageResource(R.drawable.ic_settings_grey)
+        lblSetting!!.setTextColor(Color.parseColor("#9b9b9b"))
+        imghelp!!.setImageResource(R.drawable.ic_help_grey)
+        lblhelp!!.setTextColor(Color.parseColor("#9b9b9b"))
+        imgNotiifcation!!.setImageResource(R.drawable.ic_customer_info_grey)
+        lblNotifications!!.setTextColor(Color.parseColor("#9b9b9b"))
+        imgHome!!.setImageResource(R.drawable.ic_home)
+        lblHome!!.setTextColor(Color.parseColor("#414545"))    }
 
+    private fun customPopupNumbers(number1: String, number2: String) {
+        var token = SharedPreference.getSHToken(this)
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.custom_popup_numbers)
+        val lblNumber1 = dialog.findViewById(R.id.lblNumber1) as TextView
+        val lblNumber2 = dialog.findViewById(R.id.lblNumber2) as TextView
+        lblNumber1.text = number1
+        lblNumber2.text = number2
+        val lnrNumber1 = dialog.findViewById(R.id.lnrNumber1) as RelativeLayout
+        val lnrNumber2 = dialog.findViewById(R.id.lnrNumber2) as RelativeLayout
 
+        lnrNumber1.setOnClickListener {
+            val jsonObject = JsonObject()
+            jsonObject.addProperty(ApiRequestNames.Req_CustomerID, customer_id_to_call)
+            jsonObject.addProperty(ApiRequestNames.Req_CustomerNumber, number1)
+            dashboardViewmodel!!.callCustomer(jsonObject, token!!, this)
+            dialog.dismiss()
+        }
+        lnrNumber2.setOnClickListener {
+
+            val jsonObject = JsonObject()
+            jsonObject.addProperty(ApiRequestNames.Req_CustomerID, customer_id_to_call)
+            jsonObject.addProperty(ApiRequestNames.Req_CustomerNumber, number2)
+            dashboardViewmodel!!.callCustomer(jsonObject, token!!, this)
+
+            dialog.dismiss()
+        }
+        dialog.show()
+
+    }
     private fun PopUpForBlocking(v: View) {
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val layout: View = inflater.inflate(R.layout.popup_blocking, null)
@@ -563,38 +687,28 @@ class DashboardHome : AppCompatActivity() {
         val jsonObject = JsonObject()
         jsonObject.addProperty(ApiRequestNames.Req_LoginId, CommonUtil.UserData!!.member_id)
         jsonObject.addProperty(ApiRequestNames.Req_CustomerID, customerid)
-        dashboardViewmodel!!.blockCustomer(jsonObject,token!!, this)
+        dashboardViewmodel!!.blockCustomer(jsonObject, token!!, this)
     }
 
     private fun ClickToCall(data: RecentCallsData) {
+        customer_id_to_call = data.customer_id
         var token = SharedPreference.getSHToken(this)
-
-        val jsonObject = JsonObject()
-        jsonObject.addProperty(ApiRequestNames.Req_AgentID, data.agent_id)
-        jsonObject.addProperty(ApiRequestNames.Req_AgentNumber, UserData!!.mobile_number)
-        jsonObject.addProperty(ApiRequestNames.Req_CustomerID, data.customer_id)
-        jsonObject.addProperty(ApiRequestNames.Req_CustomerNumber, data.cusomer_mobile)
-        jsonObject.addProperty(ApiRequestNames.Req_OldConferenceID, data.conference_id)
-        jsonObject.addProperty(ApiRequestNames.Req_OrganisationID, UserData!!.organisation_id)
-        jsonObject.addProperty(ApiRequestNames.Req_ProjectID, data.project_id)
-        dashboardViewmodel!!.callCustomer(jsonObject, token!!, this)
+        dashboardViewmodel!!.getDialNumbers(this,token!!,data.customer_id)
     }
 
-
     fun AlertFinishOk(msg: String?) {
+
         if (applicationContext != null) {
             val dlg = AlertDialog.Builder(applicationContext)
             dlg.setTitle("Info")
             dlg.setMessage(msg)
             dlg.setPositiveButton("OK") { dialog, which ->
-
             }
             dlg.setCancelable(false)
             dlg.create()
             dlg.show()
         }
     }
-
 
     private fun PopUpVoicePlay(v: View, id: String) {
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -606,11 +720,9 @@ class DashboardHome : AppCompatActivity() {
             true
         )
         popupWindow!!.contentView = layout
-
         imgclose = layout.findViewById<View>(R.id.imgclose) as ImageView
         btnDownload = layout.findViewById<View>(R.id.btnDownload) as Button
         webview = layout.findViewById<WebView>(R.id.webviewVoice)
-
         popupWindow!!.showAtLocation(v, Gravity.CENTER, 0, 0)
         val container = popupWindow!!.contentView.parent as View
         val wm = getSystemService(Context.WINDOW_SERVICE) as WindowManager
@@ -618,7 +730,6 @@ class DashboardHome : AppCompatActivity() {
         p.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND
         p.dimAmount = 0.7f
         wm.updateViewLayout(container, p)
-
         val progressDialog = CustomLoading.createProgressDialog(this)
         webview!!.webChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(view: WebView, progress: Int) {
@@ -636,7 +747,6 @@ class DashboardHome : AppCompatActivity() {
         webSettings.javaScriptEnabled = true
         webview!!.loadUrl(VoiceFilePath!!)
         progressDialog.dismiss()
-
         imgclose!!.setOnClickListener(
             {
                 webview!!.destroy()
@@ -646,7 +756,6 @@ class DashboardHome : AppCompatActivity() {
 
             })
     }
-
     fun Alert(activity: Activity?, msg: String?, value: Boolean) {
         if (activity != null) {
             val dlg = AlertDialog.Builder(activity)
@@ -664,7 +773,6 @@ class DashboardHome : AppCompatActivity() {
             dlg.show()
         }
     }
-
     private fun ApiCall(offset: Int) {
         var token = SharedPreference.getSHToken(this)
         if (txtSearch!!.text.toString().isNullOrEmpty()) {
@@ -681,10 +789,11 @@ class DashboardHome : AppCompatActivity() {
             token!!,
             0,
             UserData!!.member_id,
+            lblFromDate!!.text.toString(),
+            lblToDate!!.text.toString(),
             this
         )
     }
-
     private fun GetTotalCountApi() {
         var token = SharedPreference.getSHToken(this)
         dashboardViewmodel!!.getCallTotalCount(
@@ -692,28 +801,46 @@ class DashboardHome : AppCompatActivity() {
             type!!,
             CommonUtil.UserData!!.member_id,
             token!!,
-            this
+            this,"Calls"
         )
     }
 
-    @OnClick(R.id.LayoutRecentCalls)
-    fun RecentCallClick() {
+    @OnClick(R.id.lnrFromDate)
+    fun fromDateClick(view: View) {
+        fromDatePicker(view)
+    }
 
+    private fun fromDatePicker(view: View) {
+        val calendar= Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val datePickerDialog = DatePickerDialog(this@DashboardHome,R.style.MyDatePickerDialogTheme, DatePickerDialog.OnDateSetListener
+        { view, year, monthOfYear, dayOfMonth ->
+            lblFromDate!!.setText("" + dayOfMonth + "/" + (monthOfYear+1) + "/" + year)
+        }, year, month, day)
 
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+        datePickerDialog.show()
+    }
 
-        Offset = 0
-        imgRecentCalls!!.setImageResource(R.drawable.recentcall_pink)
-        lblRecentCalls!!.setTextColor(Color.parseColor("#d93b74"))
-        imgMissedCalls!!.setImageResource(R.drawable.missedcall_grey)
-        lblMissedCallls!!.setTextColor(Color.parseColor("#9b9b9b"))
-        type = "recent"
-        CallType =true
-        GetTotalCountApi()
+    @OnClick(R.id.lnrToDate)
+    fun toDateClick(view: View) {
+        toDatePicker(view)
+    }
 
-//        ApiCall(Offset)
+    private fun toDatePicker(view: View) {
+        val calendar= Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val datePickerDialog = DatePickerDialog(this@DashboardHome,R.style.MyDatePickerDialogTheme, DatePickerDialog.OnDateSetListener
+        { view, year, monthOfYear, dayOfMonth ->
+            lblToDate!!.setText("" + dayOfMonth + "/" + (monthOfYear+1) + "/" + year)
+        }, year, month, day)
 
-
-
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+        datePickerDialog.show()
     }
 
     @OnClick(R.id.imgMenu)
@@ -722,11 +849,21 @@ class DashboardHome : AppCompatActivity() {
 
     }
 
+    @OnClick(R.id.LayoutRecentCalls)
+    fun RecentCallClick() {
+        Offset = 0
+        imgRecentCalls!!.setImageResource(R.drawable.recentcall_pink)
+        lblRecentCalls!!.setTextColor(Color.parseColor("#d93b74"))
+        imgMissedCalls!!.setImageResource(R.drawable.missedcall_grey)
+        lblMissedCallls!!.setTextColor(Color.parseColor("#9b9b9b"))
+        type = "recent"
+        CallType = true
+        GetTotalCountApi()
+    }
+
     @OnClick(R.id.LayoutMissedCalls)
     fun MissedCallClick() {
-
         Offset = 0
-
         imgRecentCalls!!.setImageResource(R.drawable.recentcall_grey)
         lblRecentCalls!!.setTextColor(Color.parseColor("#9b9b9b"))
         imgMissedCalls!!.setImageResource(R.drawable.missedcall_pink)
@@ -735,17 +872,13 @@ class DashboardHome : AppCompatActivity() {
         CallType = false
         GetTotalCountApi()
 
-//        ApiCall(Offset)
-        recyclerCustomer!!.scrollToPosition(0)
-        recentCallAdapter!!.notifyDataSetChanged()
     }
 
     @OnClick(R.id.rytHome)
     fun homeclick() {
-
         imgHome!!.setImageResource(R.drawable.ic_home)
         lblHome!!.setTextColor(Color.parseColor("#414545"))
-        imgNotiifcation!!.setImageResource(R.drawable.ic_notification_grey)
+        imgNotiifcation!!.setImageResource(R.drawable.ic_customer_info_grey)
         lblNotifications!!.setTextColor(Color.parseColor("#9b9b9b"))
         imghelp!!.setImageResource(R.drawable.ic_help_grey)
         lblhelp!!.setTextColor(Color.parseColor("#9b9b9b"))
@@ -755,7 +888,7 @@ class DashboardHome : AppCompatActivity() {
 
     @OnClick(R.id.rytNotifications)
     fun notificationClick() {
-        imgNotiifcation!!.setImageResource(R.drawable.ic_notification)
+        imgNotiifcation!!.setImageResource(R.drawable.ic_customer_info_black)
         lblNotifications!!.setTextColor(Color.parseColor("#414545"))
         imgHome!!.setImageResource(R.drawable.ic_home_grey)
         lblHome!!.setTextColor(Color.parseColor("#9b9b9b"))
@@ -763,9 +896,11 @@ class DashboardHome : AppCompatActivity() {
         lblhelp!!.setTextColor(Color.parseColor("#9b9b9b"))
         imgSettings!!.setImageResource(R.drawable.ic_settings_grey)
         lblSetting!!.setTextColor(Color.parseColor("#9b9b9b"))
-        val i = Intent(this, Notification::class.java)
+
+        val i = Intent(this, CustomerInfo::class.java)
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(i)
+
     }
 
     @OnClick(R.id.rytHelp)
@@ -773,7 +908,7 @@ class DashboardHome : AppCompatActivity() {
 
         imghelp!!.setImageResource(R.drawable.ic_help)
         lblhelp!!.setTextColor(Color.parseColor("#414545"))
-        imgNotiifcation!!.setImageResource(R.drawable.ic_notification_grey)
+        imgNotiifcation!!.setImageResource(R.drawable.ic_customer_info_grey)
         lblNotifications!!.setTextColor(Color.parseColor("#9b9b9b"))
         imgHome!!.setImageResource(R.drawable.ic_home_grey)
         lblHome!!.setTextColor(Color.parseColor("#9b9b9b"))
@@ -788,7 +923,7 @@ class DashboardHome : AppCompatActivity() {
         lblSetting!!.setTextColor(Color.parseColor("#414545"))
         imghelp!!.setImageResource(R.drawable.ic_help_grey)
         lblhelp!!.setTextColor(Color.parseColor("#9b9b9b"))
-        imgNotiifcation!!.setImageResource(R.drawable.ic_notification_grey)
+        imgNotiifcation!!.setImageResource(R.drawable.ic_customer_info_grey)
         lblNotifications!!.setTextColor(Color.parseColor("#9b9b9b"))
         imgHome!!.setImageResource(R.drawable.ic_home_grey)
         lblHome!!.setTextColor(Color.parseColor("#9b9b9b"))
@@ -804,27 +939,35 @@ class DashboardHome : AppCompatActivity() {
         startActivity(i)
     }
 
-    @OnClick(R.id.imgsearch)
+    @OnClick(R.id.btnSearch)
     fun searchClick() {
         var token = SharedPreference.getSHToken(this)
 
-        if(txtSearch!!.text.toString().isNullOrEmpty()){
-            SearchKeyWord=""
-        }else{
+        if (txtSearch!!.text.toString().isNullOrEmpty()) {
+            SearchKeyWord = ""
+        } else {
             SearchKeyWord = txtSearch!!.text.toString()
 
         }
 
-        if(!SearchKeyWord.isNullOrEmpty()){
-            if(CallType){
-                dashboardViewmodel!!.getCallsbytype(PageLimit, Offset,SearchKeyWord!!,"recent", token!!, 0,
-                    UserData!!.member_id ,this)
-            }else{
-                dashboardViewmodel!!.getCallsbytype(PageLimit, Offset,SearchKeyWord!!,"missed", token!!, 0,
-                    UserData!!.member_id ,this)
-            }
 
-        }
+        GetTotalCountApi()
+
+
+//        if (!SearchKeyWord.isNullOrEmpty()) {
+//            if (CallType) {
+//                dashboardViewmodel!!.getCallsbytype(
+//                    PageLimit, Offset, SearchKeyWord!!, "recent", token!!, 0,
+//                    UserData!!.member_id,lblFromDate!!.text.toString(),lblToDate!!.text.toString(), this
+//                )
+//            } else {
+//                dashboardViewmodel!!.getCallsbytype(
+//                    PageLimit, Offset, SearchKeyWord!!, "missed", token!!, 0,
+//                    UserData!!.member_id,lblFromDate!!.text.toString(),lblToDate!!.text.toString(), this
+//                )
+//            }
+//
+//        }
 
 
     }
@@ -836,10 +979,8 @@ class DashboardHome : AppCompatActivity() {
         popup.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.logout) {
                 alert("Are you sure? Do you want to logout", "Logout")
-            }
-            if (item.itemId == R.id.changepassword) {
+            } else if (item.itemId == R.id.changepassword) {
                 alert("Are you sure? Do you want to change password", "ChangePassword")
-
             }
             true
         }
@@ -855,6 +996,10 @@ class DashboardHome : AppCompatActivity() {
                 val intent = Intent(this, FollowUpDetails::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
+            } else if (item.itemId == R.id.notification) {
+                val i = Intent(this, Notification::class.java)
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(i)
             }
 
             true
@@ -937,9 +1082,5 @@ class DashboardHome : AppCompatActivity() {
     }
 
 
-//    override fun onPause() {
-//        super.onPause()
-//        webview!!.onPause()
-//    }
 
 }

@@ -4,4 +4,27 @@
     <style name="spinnerStyle" parent="@android:style/Widget.TextView.SpinnerItem">
         <item name="android:padding">15sp</item>
     </style>
+
+
+    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+
+    </style>
+
+    <style name="spinner_style">
+        <item name="android:padding">20dp</item>
+        <item name="android:showDividers">none</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:popupBackground">@drawable/bg_shadow_white</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:dropDownSelector">@android:color/white</item>
+    </style>
+
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorAccent">@color/app_color</item>
+
+        <!-- No need to override 'datePickerStyle' -->
+        <!-- <item name="android:datePickerStyle">@style/MyDatePickerStyle</item> -->
+    </style>
+
+
 </resources>

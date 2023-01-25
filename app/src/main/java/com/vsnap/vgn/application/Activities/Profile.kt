@@ -29,7 +29,6 @@ import com.vsnap.vgn.application.Utils.CommonUtil
 import com.vsnap.vgn.application.Utils.CommonUtil.CallAvailableType
 import com.vsnap.vgn.application.Utils.SharedPreference
 import com.vsnap.vgn.application.ViewModel.Dashboard
-import okhttp3.internal.notify
 
 class Profile : AppCompatActivity() {
 
@@ -91,7 +90,6 @@ class Profile : AppCompatActivity() {
         val imgBack = view.findViewById<View>(R.id.imgBack) as ImageView
         val rytAction = view.findViewById<View>(R.id.rytAction) as RelativeLayout
         ButterKnife.bind(this)
-
         lblTitle.text = "Profile"
         imgBack.setOnClickListener({
             onBackPressed()

@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.IntentSender.SendIntentException
 import android.os.Bundle
 import android.os.Handler
+import android.provider.ContactsContract
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
@@ -17,8 +18,6 @@ import androidx.lifecycle.ViewModelProvider
 import butterknife.BindView
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.install.InstallState
 import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
@@ -32,12 +31,12 @@ import com.vsnap.vgn.application.R
 import com.vsnap.vgn.application.Respository.ApiRequestNames
 import com.vsnap.vgn.application.Utils.CommonUtil
 import com.vsnap.vgn.application.Utils.CommonUtil.HelpUrl
-import com.vsnap.vgn.application.Utils.CommonUtil.LogoutType
 import com.vsnap.vgn.application.Utils.CustomLoading
 import com.vsnap.vgn.application.Utils.InAppUpdate
 import com.vsnap.vgn.application.Utils.SharedPreference
 import com.vsnap.vgn.application.ViewModel.Auth
 import org.mindrot.jbcrypt.BCrypt
+
 
 class Splash : AppCompatActivity() {
     @JvmField
@@ -55,7 +54,7 @@ class Splash : AppCompatActivity() {
     var GetUserDetailsData: LoginUserDetails? = null
     var Ver_UpdateAvailable = "0"
     var Force_UpdateReq = "1"
-    var VersionCode = 1
+    var VersionCode = 2
 
 
     var appUpdateManager: AppUpdateManager? = null

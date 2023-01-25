@@ -11,9 +11,9 @@
         android:id="@+id/lnrCustomerInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/eight"
         android:background="@drawable/bg_card_outer_line"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/eight"
         android:padding="@dimen/three"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent">
@@ -73,26 +73,26 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_default="percent">
+
+
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="0dp"
+                            android:id="@+id/layoutAgent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintWidth_percent=".4"
-                            android:id="@+id/layoutAgent">
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
                                 android:id="@+id/imgAgent"
                                 android:layout_width="@dimen/thirty"
                                 android:layout_height="@dimen/twenty_five"
-                                android:layout_marginLeft="@dimen/eight"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="12dp"
                                 android:src="@drawable/customer_agent"
                                 android:visibility="visible"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                />
+                                app:layout_constraintTop_toTopOf="parent" />
 
 
                             <TextView
@@ -100,7 +100,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/three"
-                                android:text=""
+                                android:layout_marginLeft="10dp"
+                                android:text=" ksdjsad asjhdsajhd ahsdjasfd sajdfasf asjhf"
                                 android:textColor="@color/clr_text"
                                 android:textSize="@dimen/thirteen"
                                 android:textStyle="bold"
@@ -110,18 +111,19 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/five"
-                            app:layout_constraintBottom_toBottomOf="@+id/layoutAgent"
-                            app:layout_constraintLeft_toRightOf="@+id/layoutAgent"
-                            app:layout_constraintTop_toTopOf="@+id/layoutAgent"
-                            app:layout_constraintWidth_percent=".6">
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layoutAgent">
+
                             <ImageView
                                 android:id="@+id/imgProject"
                                 android:layout_width="@dimen/twenty"
                                 android:layout_height="@dimen/twenty"
                                 android:layout_marginLeft="@dimen/eight"
+                                android:layout_marginTop="10dp"
                                 android:layout_marginRight="12dp"
                                 android:src="@drawable/project_icon"
                                 android:visibility="visible"
@@ -129,22 +131,21 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
+
                                 android:id="@+id/lblProjectName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/three"
                                 android:layout_marginEnd="@dimen/twenty"
                                 android:text="West Mambalam Apartments"
                                 android:textColor="@color/clr_text"
                                 android:textSize="@dimen/thirteen"
                                 android:textStyle="bold"
-                                android:layout_marginStart="@dimen/three"
                                 app:layout_constraintBottom_toBottomOf="@+id/imgProject"
-                                app:layout_constraintTop_toTopOf="@+id/imgProject"
                                 app:layout_constraintLeft_toRightOf="@+id/imgProject"
-                         />
+                                app:layout_constraintTop_toTopOf="@+id/imgProject" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -152,7 +153,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/LayoutNameProject"
-                        android:layout_marginStart="@dimen/ten"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
                         app:layout_constraintHorizontal_chainStyle="spread"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintWidth_default="percent">
@@ -196,6 +198,37 @@
                             app:layout_constraintTop_toTopOf="@+id/lblRecentCallTime"
                             app:layout_constraintWidth_percent=".2" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <RelativeLayout
+                        android:id="@+id/rytRecentCallStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layoutSubjectType">
+
+                        <ImageView
+                            android:id="@+id/lblRecent"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/call_status"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/lblRecentCallStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toRightOf="@+id/lblRecent"
+                            android:text=""
+                            android:textColor="@color/clr_green"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
 
                     <ImageView
                         android:id="@+id/imgArrowdown2"
@@ -322,11 +355,11 @@
                 android:id="@+id/lnrMenuIcons2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/lnrMenuIcons1"
                 android:layout_gravity="start"
                 android:layout_marginRight="@dimen/ten"
                 android:layout_marginBottom="@dimen/five"
                 android:orientation="horizontal"
-                android:layout_below="@+id/lnrMenuIcons1"
                 android:paddingStart="@dimen/five"
                 android:weightSum="3">
 
@@ -353,8 +386,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/imgBlock"
                         android:layout_centerHorizontal="true"
-                        android:text="Block"
                         android:layout_marginStart="@dimen/ten"
+                        android:text="Block"
 
                         android:textColor="@color/black"
                         android:textSize="12dp"

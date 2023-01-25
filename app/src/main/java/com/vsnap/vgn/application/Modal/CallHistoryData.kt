@@ -33,5 +33,13 @@ class CallHistoryData {
     @Expose
     var agent_id = 0
 
+    @SerializedName("call_status")
+    @Expose
+    var call_status: String? = null
+
+    @SerializedName("file_recording")
+    @Expose
+    var file_recording: String? = null
+
 
 }

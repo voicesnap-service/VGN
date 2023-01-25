@@ -63,4 +63,10 @@ class RecentCallsData {
     @SerializedName("is_click_to_call_made")
     @Expose
     var is_click_to_call_made: String? = null
+
+    @SerializedName("recent_call_status")
+    @Expose
+    var recent_call_status: String? = null
+
+
 }

@@ -59,6 +59,13 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeCreate" />
+
+        <activity
+            android:name=".Activities.CustomerInfo"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeCreateCust" />
         <activity
             android:name=".Activities.UpdateCustomerInfo"
             android:exported="false"
@@ -76,7 +83,8 @@
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/DashboardTheme" />
+            android:theme="@style/DashboardTheme"
+          />
         <activity
             android:name=".Activities.Otp"
             android:exported="false"

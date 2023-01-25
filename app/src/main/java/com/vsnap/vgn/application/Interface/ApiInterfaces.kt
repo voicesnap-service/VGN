@@ -42,9 +42,11 @@ interface ApiInterfaces {
         @Query(ApiRequestNames.Req_count) count: Int,
         @Query(ApiRequestNames.Req_Type) type: String,
         @Query(ApiRequestNames.Req_LoginId) loginId: Int,
+        @Query(ApiRequestNames.from_date) fromDate: String,
+        @Query(ApiRequestNames.to_date) toDate: String,
         @Header(ApiRequestNames.Req_token) token: String,
 
-    ): Call<RecentCallsResponse?>?
+        ): Call<RecentCallsResponse?>?
 
     @GET(ApiMethods.GetNotifications)
     fun GetNotificationList(
@@ -57,8 +59,30 @@ interface ApiInterfaces {
     ): Call<NotificationResponse?>?
 
 
+
+
+    @GET(ApiMethods.customerDetails)
+    fun GetCustomerDetails(@Header(ApiRequestNames.Req_token) token: String,
+                           @Query(ApiRequestNames.Req_limit) AppId: Int,
+                           @Query(ApiRequestNames.Req_offset) offset: Int,
+                           @Query(ApiRequestNames.Req_keyword) keyword: String,
+                           @Query(ApiRequestNames.Req_count) count: Int,@Query(ApiRequestNames.customer_type) customer_type: String,
+                           @Query(ApiRequestNames.from_date) fromDate: String,
+                           @Query(ApiRequestNames.to_date) toDate: String,): Call<CustomerDetails?>?
+
+
     @GET(ApiMethods.templates)
-    fun GetTemplates(@Header(ApiRequestNames.Req_token) token: String): Call<TemplatesData?>?
+    fun GetTemplates(@Header(ApiRequestNames.Req_token) token: String, @Query(ApiRequestNames.Req_TemplateType) AppId: String): Call<TemplatesData?>?
+
+    @GET(ApiMethods.templatesTypes)
+    fun GetTemplatesTypes(@Header(ApiRequestNames.Req_token) token: String): Call<TemplatesType?>?
+
+
+    @GET(ApiMethods.customerTypes)
+    fun GetCustomerTypes(@Header(ApiRequestNames.Req_token) token: String): Call<CustomerType?>?
+
+    @GET(ApiMethods.clickToCallDialNumbers)
+    fun GetDialNumbers(@Header(ApiRequestNames.Req_token) token: String,@Query(ApiRequestNames.Req_CustomerID) AppId: Int): Call<ClickToCallDialNumbers?>?
 
     @GET(ApiMethods.GetAgentProfile)
     fun GetAgentProfile(
@@ -142,6 +166,15 @@ interface ApiInterfaces {
 
     @GET(ApiMethods.CallListType)
     fun GetCallListCount(
+        @Query(ApiRequestNames.Req_count) AppId: Int,
+        @Query(ApiRequestNames.Req_Type) type: String,
+        @Query(ApiRequestNames.Req_LoginId) loginId: Int,
+        @Header(ApiRequestNames.Req_token) token: String,
+    ): Call<GetTotalCountResponse?>?
+
+
+    @GET(ApiMethods.customerDetailsCount)
+    fun GetCustomerListCount(
         @Query(ApiRequestNames.Req_count) AppId: Int,
         @Query(ApiRequestNames.Req_Type) type: String,
         @Query(ApiRequestNames.Req_LoginId) loginId: Int,

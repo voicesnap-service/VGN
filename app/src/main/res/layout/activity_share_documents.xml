@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,34 +8,118 @@
     tools:context=".Activities.ShareDocuments">
 
 
-    <Spinner
-        android:id="@+id/spinner"
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_above="@+id/btnShareDocument"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_height="40dp"
-        android:layout_margin="15dp"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/rytSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_shadow_white"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinnerWhatsAppTypes"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_drop_down" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@+id/rytSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/rytSpinner2"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_shadow_white"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_drop_down" />
+
+    </RelativeLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/rytSpinner2"
         android:id="@+id/layoutDescription"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_margin="15dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_shadow_white"
         android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:id="@+id/lnrDynamicLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:visibility="visible"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/txtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/five"
+            android:visibility="gone"
+            android:lineSpacingExtra="@dimen/five"
             android:background="@android:color/transparent"
             android:hint="Type your description here..."
             android:inputType="textMultiLine"
             android:maxLines="6"
+            android:editable="false"
             android:padding="@dimen/ten"
             android:paddingStart="@dimen/ten"
             android:textColor="@color/black"
@@ -47,26 +131,31 @@
 
     <TextView
         android:id="@+id/lblNoRecordsFound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="70dp"
         android:text="@string/txt_no_data_found"
         android:textColor="@color/black"
         android:textSize="14dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAlignment="center" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerDocument"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/btnShareDocument"
         app:layout_constraintTop_toBottomOf="@+id/layoutDescription" />
+
+
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
 
     <Button
         android:id="@+id/btnShareDocument"
@@ -79,12 +168,11 @@
         android:textColor="@color/white"
         android:textSize="@dimen/fourteen"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+
         >
 
     </Button>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -30,6 +30,11 @@ class Dashboard(application: Application) : AndroidViewModel(application) {
     var NotificationTotalCountLiveData: LiveData<GetTotalCountResponse?>? = null
 
     var TemplatesLiveData: LiveData<TemplatesData?>? = null
+    var WhatsAppTemplateTypesLiveData: LiveData<TemplatesType?>? = null
+    var DialNumbersLiveData: LiveData<ClickToCallDialNumbers?>? = null
+    var CustomerDetailsLiveData: LiveData<CustomerDetails?>? = null
+
+    var CustomerTypesLiveData: LiveData<CustomerType?>? = null
 
 
     fun init() {
@@ -53,16 +58,35 @@ class Dashboard(application: Application) : AndroidViewModel(application) {
         SubmitShareDocumentLiveData = apiRepositories!!.SendWhatsAppDocumentLiveData
         NotificationTotalCountLiveData = apiRepositories!!.GetNotificationTotalCountLiveData
         TemplatesLiveData = apiRepositories!!.TemplatesMutableData
+        WhatsAppTemplateTypesLiveData = apiRepositories!!.TemplatesTypesMutableData
+        DialNumbersLiveData = apiRepositories!!.ClickToCallDialNumbersMutableData
+        CustomerDetailsLiveData = apiRepositories!!.CustomerDetailsMutableData
+        CustomerTypesLiveData = apiRepositories!!.CustomerTypesMutableData
     }
 
 
-    fun getTemplate( activity: Activity?, token: String) {
-        apiRepositories!!.GetTemplates(activity,token)
+    fun getCustomerDetails( activity: Activity?, token: String,limit:Int,offset: Int,keyeword:String,count:Int,type :String,fromDate: String,toDate: String) {
+        apiRepositories!!.GetCustomerDetails(activity,token,limit,offset,keyeword,count,type,fromDate,toDate)
     }
 
+    fun getDialNumbers(activity: Activity?, token: String,customer_id : Int) {
+        apiRepositories!!.GetClickToCallDialNumbers(activity,token,customer_id)
+    }
 
-    fun getCallsbytype(limit: Int, offset: Int, keyword: String, type: String, token: String,count: Int,loginId: Int, activity: Activity?) {
-        apiRepositories!!.GetCallsListByType(limit, offset,keyword, type, token, count,loginId,activity)
+    fun getTemplate( activity: Activity?, token: String,template_type: String) {
+        apiRepositories!!.GetTemplates(activity,token,template_type)
+    }
+
+    fun getTemplateTypes( activity: Activity?, token: String) {
+        apiRepositories!!.GetTemplateTypes(activity,token)
+    }
+
+    fun getCustomerTypes( activity: Activity?, token: String) {
+        apiRepositories!!.GetCustomerTypes(activity,token)
+    }
+
+    fun getCallsbytype(limit: Int, offset: Int, keyword: String, type: String, token: String,count: Int,loginId: Int,fromDate : String,toDate : String, activity: Activity?) {
+        apiRepositories!!.GetCallsListByType(limit, offset,keyword, type, token, count,loginId,fromDate,toDate,activity)
     }
 
     fun getNotificationList(
@@ -82,9 +106,10 @@ class Dashboard(application: Application) : AndroidViewModel(application) {
         type: String,
         loginId: Int,
         token: String,
-        activity: Activity?
+        activity: Activity?,
+        method_type : String
     ) {
-        apiRepositories!!.GetCallCount(count, type, loginId, token,activity)
+        apiRepositories!!.GetCallCount(count, type, loginId, token,activity,method_type)
     }
 
     fun getProfileData(agent_id: Int, token: String, activity: Activity?) {
